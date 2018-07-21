@@ -25,6 +25,7 @@
     "@angular/router": "^6.0.9",
     "@okta/okta-angular": "^1.0.1",
     "core-js": "^2.5.7",
+    "hammerjs": "^2.0.8",
     "rxjs": "^6.2.2",
     "zone.js": "^0.8.26"
   },
