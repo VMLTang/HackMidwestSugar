@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-$sugar-theme-primary: mat-palette($mat-cyan);
+$sugar-theme-primary: mat-palette($mat-cyan, 400);
 $sugar-theme-accent: mat-palette($mat-yellow, 400);
 $sugar-theme-warn: mat-palette($mat-deep-orange, 600);
 $sugar-theme: mat-light-theme($sugar-theme-primary, $sugar-theme-accent, $sugar-theme-warn);

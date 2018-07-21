@@ -1,23 +1,26 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { environment } from '@sugar/environments/environment.prod';
 
 declare const H: any;
 
 @Component({
     selector: 'sugar-map',
-    templateUrl: './map.html'
+    templateUrl: './map.html',
+    styleUrls: [ './map.component.scss' ]
 })
 export class MapComponent implements AfterViewInit {
-    @Input() parentElement: HTMLElement;
     public platform = new H.service.Platform(environment.hereConfig);
 
-    constructor() {
+    constructor(
+        private element: ElementRef
+    ) {
         console.log('here');
     }
 
     public ngAfterViewInit() {
         const defaultLayers = this.platform.createDefaultLayers();
-        const map = new H.Map(this.parentElement,
+        const map = new H.Map(
+            this.element.nativeElement,
             defaultLayers.normal.map,
             {
                 zoom: 10,
