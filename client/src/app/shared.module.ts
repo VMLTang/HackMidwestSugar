@@ -1,18 +1,19 @@
+import { LayoutModule } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 
 /* @angular */
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 
 /* @angular/flex-layout */
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 /* @angular/cdk */
-import { LayoutModule } from '@angular/cdk/layout';
 
 /* @angular/material */
-import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   exports: [
@@ -29,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
 
     /* @angular/material */
     MatButtonModule,
+    MatCardModule
   ],
 })
 export class SugarSharedModule {}

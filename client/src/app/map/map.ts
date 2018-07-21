@@ -7,7 +7,7 @@ import {
     SimpleChanges
     } from '@angular/core';
 import { environment } from '@sugar/environments/environment.prod';
-import { MapLocationOptions, MapPoint } from '@sugar/map/map.types';
+import { MapLocationOptions, MapPoint } from './map.types';
 
 declare const H: any;
 
