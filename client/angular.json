@@ -45,12 +45,20 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "showCircularDependencies": true,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles",
+                "src/assets"
+              ]
+            },
             "styles": [
               "src/styles/main.scss"
             ],
             "scripts": [
               "src/assets/scripts/mapsjs-core.js",
-              "src/assets/scripts/mapsjs-service.js"
+              "src/assets/scripts/mapsjs-service.js",
+              "node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {
