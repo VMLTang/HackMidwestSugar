@@ -6,4 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./sugar-feed-card.scss']
 })
 export class SugarFeedCardComponent {
+
+    public onLike(): void {
+
+    }
+
+    public toogleComment(): void {
+
+    }
+
+    public submitComment(): void {
+    }
 }
