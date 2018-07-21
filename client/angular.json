@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "sugar",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss",
@@ -48,7 +48,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/mapsjs-core.js",
+              "src/assets/scripts/mapsjs-service.js"
+            ]
           },
           "configurations": {
             "production": {
