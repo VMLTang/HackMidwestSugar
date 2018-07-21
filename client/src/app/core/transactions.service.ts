@@ -1,11 +1,22 @@
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Transaction } from '@sugar/app/sugar-feed/sugar-feed.types';
-import { Observable } from '../../../node_modules/rxjs';
+import { Transaction } from '@sugar/lib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionsService {
-  public transactions$: Observable<Transaction[]>;
-  constructor() { }
+  readonly transactions$: Observable<Transaction[]>;
+
+  constructor() {
+
+    this.transactions$ = of([
+      {
+        id: 'abc',
+      },
+      {
+        id: 'abc',
+      },
+    ]);
+  }
 }
