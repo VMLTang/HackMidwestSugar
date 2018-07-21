@@ -1,5 +1,13 @@
-import { AfterViewInit, Component, ElementRef } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    Input,
+    OnChanges,
+    SimpleChanges
+    } from '@angular/core';
 import { environment } from '@sugar/environments/environment.prod';
+import { MapLocationOptions } from '@sugar/map/map.types';
 
 declare const H: any;
 
@@ -8,8 +16,11 @@ declare const H: any;
     templateUrl: './map.html',
     styleUrls: [ './map.component.scss' ]
 })
-export class MapComponent implements AfterViewInit {
-    public platform = new H.service.Platform(environment.hereConfig);
+export class MapComponent implements AfterViewInit, OnChanges {
+    @Input() mapLocationOptions: MapLocationOptions;
+    private map: any;
+    private platform = new H.service.Platform(environment.hereConfig);
+    private defaultLayers = this.platform.createDefaultLayers();
 
     constructor(
         private element: ElementRef
@@ -18,27 +29,18 @@ export class MapComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit() {
-        const defaultLayers = this.platform.createDefaultLayers();
-        const map = new H.Map(
-            this.element.nativeElement,
-            defaultLayers.normal.map,
-            {
-                zoom: 10,
-                center: { lat: 52.5, lng: 13.4 }
-            });
+    }
 
-        // // Instantiate (and display) a map object:
-        // const map = new H.Map(
-        //     document.getElementById('mapContainer'),
-        //     defaultLayers.normal.map,
-        //     {
-        //         zoom: 10,
-        //         center: { lat: 52.5, lng: 13.4 }
-        //     });
-
-
-        console.log(map);
-
-
+    public ngOnChanges(changes: SimpleChanges): void  {
+        console.log('changed', changes, this.mapLocationOptions);
+        if (changes.mapLocationOptions.firstChange) {
+            console.log('first change');
+            this.map = new H.Map(
+                this.element.nativeElement,
+                this.defaultLayers.normal.map,
+                this.mapLocationOptions);
+        }
+        console.log(this.map);
+        // this.map.zo
     }
 }
