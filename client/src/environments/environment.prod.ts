@@ -6,7 +6,15 @@ const oktaProdConfig: OktaConfig = {
   clientId: '0oafs2u945PbmLYAu0h7',
 };
 
+const hereConfig = {
+  'app_id': 'uf15v48L6LE8m0gPzETV',
+  'app_code': 'wFGAWN-X2t5RLJYc8Ul6Aw',
+  useCIT: true,
+  useHTTPS: true
+};
+
 export const environment = {
   production: true,
   oktaConfig: oktaProdConfig,
+  hereConfig: hereConfig
 };

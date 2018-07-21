@@ -1,4 +1,5 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { environment } from '@sugar/environments/environment.prod';
 
 declare const H: any;
 
@@ -7,22 +8,16 @@ declare const H: any;
     templateUrl: './map.html'
 })
 export class MapComponent implements AfterViewInit {
+    @Input() parentElement: HTMLElement;
+    public platform = new H.service.Platform(environment.hereConfig);
 
-    public platform = new H.service.Platform({
-        'app_id': 'uf15v48L6LE8m0gPzETV',
-        'app_code': 'wFGAWN-X2t5RLJYc8Ul6Aw',
-        useCIT: true,
-        useHTTPS: true
-    });
-
-    constructor(private parentElement: HTMLElement) {
+    constructor() {
         console.log('here');
     }
 
     public ngAfterViewInit() {
         const defaultLayers = this.platform.createDefaultLayers();
-        const map = new H.Map(
-            this.parentElement,
+        const map = new H.Map(this.parentElement,
             defaultLayers.normal.map,
             {
                 zoom: 10,
