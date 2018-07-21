@@ -1,4 +1,5 @@
 import { OktaConfig } from '@okta/okta-angular/dist/okta/models/okta.config';
+import 'zone.js/dist/zone-error';
 
 const oktaDevConfig: OktaConfig = {
   issuer: 'https://dev-974784.oktapreview.com/oauth2/default',
@@ -6,9 +7,17 @@ const oktaDevConfig: OktaConfig = {
   clientId: '0oafs2u945PbmLYAu0h7',
 };
 
+const hereConfig = {
+  'app_id': 'uf15v48L6LE8m0gPzETV',
+  'app_code': 'wFGAWN-X2t5RLJYc8Ul6Aw',
+  useCIT: true,
+  useHTTPS: true
+};
+
 export const environment = {
   production: false,
   oktaConfig: oktaDevConfig,
+  hereConfig: hereConfig
 };
 
 /*
@@ -17,4 +26,4 @@ export const environment = {
  * import the following file, but please comment it out in production mode
  * because it will have performance impact when throw error
  */
-import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+  // Included with Angular CLI.

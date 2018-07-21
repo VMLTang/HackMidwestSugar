@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { environment } from '@sugar/environments/environment.prod';
 
 declare const H: any;
 
@@ -6,14 +7,35 @@ declare const H: any;
     selector: 'sugar-map',
     templateUrl: './map.html'
 })
-export class MapComponent {
+export class MapComponent implements AfterViewInit {
+    @Input() parentElement: HTMLElement;
+    public platform = new H.service.Platform(environment.hereConfig);
 
-    public platform = new H.service.Platform({
-        'app_id': 'uf15v48L6LE8m0gPzETV',
-        'app_code': 'wFGAWN-X2t5RLJYc8Ul6A'
-    });
+    constructor() {
+        console.log('here');
+    }
 
-    title = 'app';
+    public ngAfterViewInit() {
+        const defaultLayers = this.platform.createDefaultLayers();
+        const map = new H.Map(this.parentElement,
+            defaultLayers.normal.map,
+            {
+                zoom: 10,
+                center: { lat: 52.5, lng: 13.4 }
+            });
+
+        // // Instantiate (and display) a map object:
+        // const map = new H.Map(
+        //     document.getElementById('mapContainer'),
+        //     defaultLayers.normal.map,
+        //     {
+        //         zoom: 10,
+        //         center: { lat: 52.5, lng: 13.4 }
+        //     });
+
+
+        console.log(map);
+
+
+    }
 }
-
-
