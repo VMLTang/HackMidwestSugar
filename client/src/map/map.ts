@@ -19,6 +19,7 @@ export class MapComponent implements AfterViewInit {
 
     public ngAfterViewInit() {
         const defaultLayers = this.platform.createDefaultLayers();
+
         const map = new H.Map(
             this.element.nativeElement,
             defaultLayers.normal.map,
