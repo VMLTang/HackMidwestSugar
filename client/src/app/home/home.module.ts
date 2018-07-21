@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SugarSharedModule } from '@sugar/app/shared.module';
 import { HomeComponent } from './home.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    SugarSharedModule
   ],
   declarations: [HomeComponent]
 })
