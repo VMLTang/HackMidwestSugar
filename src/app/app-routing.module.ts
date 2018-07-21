@@ -5,6 +5,12 @@ import { HomeComponent } from '@sugar/app/home/home.component';
 
 const routes: Routes = [
   {
+    path: 'expo',
+    loadChildren: 'src/app/expo/expo.module#ExpoModule',
+    canActivateChild: [ OktaAuthGuard ],
+  },
+
+  {
     path: 'home',
     component: HomeComponent,
     canActivateChild: [ OktaAuthGuard ],
