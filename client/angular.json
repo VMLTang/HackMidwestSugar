@@ -46,7 +46,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/main.scss"
+              "src/styles/main.scss"
             ],
             "scripts": [
               "src/assets/scripts/mapsjs-core.js",
