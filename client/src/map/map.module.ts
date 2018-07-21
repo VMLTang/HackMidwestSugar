@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { SugarSharedModule } from '@sugar/app/shared.module';
 import { MapComponent } from './map';
-
-
 
 @NgModule({
   declarations: [
     MapComponent
   ],
   imports: [
+    SugarSharedModule
   ],
   exports: [
-      MapComponent
+    MapComponent
   ],
   providers: [],
   bootstrap: []
