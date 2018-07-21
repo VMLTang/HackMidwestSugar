@@ -5,7 +5,7 @@ import {
     Input,
     OnChanges,
     SimpleChanges
-    } from '@angular/core';
+} from '@angular/core';
 import { environment } from '@sugar/environments/environment.prod';
 import { MapLocationOptions, MapPoint } from '@sugar/lib';
 
@@ -14,7 +14,7 @@ declare const H: any;
 @Component({
     selector: 'sugar-map',
     templateUrl: './map.html',
-    styleUrls: [ './map.component.scss' ]
+    styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements AfterViewInit, OnChanges {
     @Input() mapLocationOptions: MapLocationOptions;
@@ -31,15 +31,15 @@ export class MapComponent implements AfterViewInit, OnChanges {
     public ngAfterViewInit() {
     }
 
-    public ngOnChanges(changes: SimpleChanges): void  {
+    public ngOnChanges(changes: SimpleChanges): void {
         console.log('changed', changes, this.mapLocationOptions);
         if (changes.mapLocationOptions) {
             if (changes.mapLocationOptions.firstChange) {
-            console.log('first change');
-            this.map = new H.Map(
-                this.element.nativeElement,
-                this.defaultLayers.normal.map,
-                this.mapLocationOptions);
+                console.log('first change');
+                this.map = new H.Map(
+                    this.element.nativeElement,
+                    this.defaultLayers.normal.map,
+                    this.mapLocationOptions);
             } else {
                 if (changes.mapLocationOptions.currentValue.zoom !== this.map.getZoom()) {
                     this.setZoom(changes.mapLocationOptions.currentValue.zoom);
