@@ -4,3 +4,27 @@ $sugar-theme-primary: mat-palette($mat-cyan, 400);
 $sugar-theme-accent: mat-palette($mat-yellow, 400);
 $sugar-theme-warn: mat-palette($mat-deep-orange, 600);
 $sugar-theme: mat-light-theme($sugar-theme-primary, $sugar-theme-accent, $sugar-theme-warn);
+
+$sugar-unit-size: 1rem;
+
+$sugar-unit-ratios: (
+  0: 0,
+  2: .2,
+  5: .5,
+  10: 1,
+  20: 2,
+  30: 3,
+  40: 4,
+  60: 6,
+  100: 10
+);
+
+$sugar-direction-labels: (
+  '': left right top bottom,
+  'l-': left,
+  'r-': right,
+  't-': top,
+  'b-': bottom,
+  'x-': left right,
+  'y-': top bottom,
+);
