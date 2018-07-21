@@ -45,6 +45,13 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "showCircularDependencies": true,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles",
+                "src/assets"
+              ]
+            },
             "styles": [
               "src/styles/main.scss"
             ],
