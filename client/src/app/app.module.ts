@@ -1,9 +1,10 @@
 import { SugarSharedModule } from './shared.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { MapModule } from '../map/map.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
   imports: [
     SugarSharedModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MapModule
   ],
   providers: [],
   bootstrap: [AppComponent]
