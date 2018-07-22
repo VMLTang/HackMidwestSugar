@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExpoMainComponent } from '@sugar/app/expo/expo-main';
 
-import { ExpoMainComponent } from './expo-main';
 
 import {
   SelectLocationComponent,

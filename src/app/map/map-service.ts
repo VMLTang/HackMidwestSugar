@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@sugar/environments/environment.prod';
 import { MapLocationOptions } from '@sugar/lib';
-import { BehaviorSubject, Observable } from '../../../node_modules/rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 declare const H: any;
 

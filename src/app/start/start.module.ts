@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { UsersService } from '@sugar/app/core/user.service';
 import { MapService } from '@sugar/app/map/map-service';
 import { SugarSharedModule } from '@sugar/app/shared.module';
 import { StartComponent } from '@sugar/app/start/start';
 import { StartService } from '@sugar/app/start/start.service';
-import { FormsModule } from '../../../node_modules/@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,10 @@ import { FormsModule } from '../../../node_modules/@angular/forms';
   exports: [
     StartComponent
   ],
-  providers: [StartService, MapService],
+  providers: [
+    StartService,
+    MapService,
+    UsersService],
   bootstrap: []
 })
 export class StartModule { }

@@ -1,2 +1,2 @@
-export * from './map.types';
-export * from './sugar.types';
+export * from '@sugar/lib/map.types';
+export * from '@sugar/lib/sugar.types';

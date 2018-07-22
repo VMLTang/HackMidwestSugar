@@ -1,0 +1,29 @@
+<mat-card>
+    <div class="row justify-space-between m-b-5">
+        <button (click)="goBack()" mat-button>
+            <i class="material-icons">
+                arrow_back
+            </i>
+        </button>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="header row align-center gap-10">
+
+        <div class="column gap-0">
+            <h1 class="mat-headline">What do you need?</h1>
+        </div>
+    </div>
+
+    <div class="p-y-10 example-container">
+        <form class="starter-form justify-center column">
+            <mat-form-field>
+                <textarea rows="4" matInput placeholder="I need"></textarea>
+            </mat-form-field>
+            <button (click)="submitNeed()" mat-raised-button color="primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="grow"></div>
+</mat-card>

@@ -1,1 +1,1 @@
-export { LoginComponent } from './login.component';
+export { LoginComponent } from '@sugar/app/login/login.component';

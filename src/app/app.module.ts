@@ -1,19 +1,20 @@
-import * as Hammer from 'hammerjs';
 import { NgModule } from '@angular/core';
-import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OktaAuthModule } from '@okta/okta-angular';
+import { AppRoutingModule } from '@sugar/app/app-routing.module';
+import { AppComponent } from '@sugar/app/app.component';
+import { AuthInterceptor } from '@sugar/app/auth.interceptor';
+import { SugarCoreModule } from '@sugar/app/core/core.module';
+import { HomeComponent } from '@sugar/app/home';
+import { LoginComponent } from '@sugar/app/login';
+import { MapModule } from '@sugar/app/map/map.module';
+import { NeedsModule } from '@sugar/app/needs/needs.module';
+import { SugarSharedModule } from '@sugar/app/shared.module';
 import { SugarFeedModule } from '@sugar/app/sugar-feed/sugar-feed.module';
-import { environment } from '../environments/environment';
-import { AuthInterceptor } from './auth.interceptor';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SugarCoreModule } from './core/core.module';
-import { HomeComponent } from './home';
-import { MapModule } from './map/map.module';
-import { SugarSharedModule } from './shared.module';
-import { LoginComponent } from './login';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { environment } from '@sugar/environments/environment';
+import * as Hammer from 'hammerjs';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '../../node_modules/@angular/common/http';
 
 export class HammerConfig extends HammerGestureConfig  {
   readonly overrides = {
@@ -46,10 +47,12 @@ export class HammerConfig extends HammerGestureConfig  {
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    HttpClientModule,
     SugarFeedModule,
     SugarSharedModule,
     SugarCoreModule,
     MapModule,
+    NeedsModule,
     OktaAuthModule.initAuth(environment.oktaConfig),
     AppRoutingModule,
   ],

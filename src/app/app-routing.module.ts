@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { OktaCallbackComponent } from '@okta/okta-angular';
+import { AuthGuard } from '@sugar/app/auth.guard';
 import { HomeComponent } from '@sugar/app/home/home.component';
-import { LoginComponent } from './login';
-import { AuthGuard } from './auth.guard';
+import { LoginComponent } from '@sugar/app/login';
+import { NeedsComponent } from '@sugar/app/needs/needs';
 
 const routes: Routes = [
+  {
+    path: 'needs',
+    component: NeedsComponent
+  },
   {
     path: 'expo',
     loadChildren: 'src/app/expo/expo.module#ExpoModule',
