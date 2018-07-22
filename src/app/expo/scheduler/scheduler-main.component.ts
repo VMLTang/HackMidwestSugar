@@ -13,7 +13,7 @@ export class SchedulerMainComponent implements OnInit, OnDestroy {
   @HostBinding() class = 'column justify-start';
 
   constructor(
-    public scheduler: SchedulerService
+    public scheduler: SchedulerService,
   ) {
 
   }

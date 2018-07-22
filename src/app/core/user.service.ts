@@ -7,10 +7,15 @@ import { BehaviorSubject, Observable } from '../../../node_modules/rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-    private userSubject: BehaviorSubject<StarterUser | null> = new BehaviorSubject<StarterUser | null>(null);
+  private userSubject = new BehaviorSubject<StarterUser | null>(null);
 
-    public user$: Observable<StarterUser | null> = this.userSubject.asObservable();
+  public user$ = this.userSubject.asObservable();
+
   constructor(private http: HttpClient) {
+  }
+
+  get userId() {
+    return localStorage.getItem('userId') || null;
   }
 
   public createBasicUser(user: StarterUser): void {
@@ -25,6 +30,7 @@ export class UsersService {
           console.log(value);
           const newUser: StarterUser = { ...user};
           newUser.userId = value.id;
+          localStorage.setItem('userId', value.id);
           newUser.location = user.location;
           this.userSubject.next(newUser);
         });

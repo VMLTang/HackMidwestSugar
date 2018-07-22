@@ -34,4 +34,20 @@ export class PostsService {
     .toPromise();
   }
 
+  grantPosting(
+    postId: number,
+    grantorId: number,
+    pickupTime: string,
+  ) {
+    return this.http.post<Posting[]>(
+      `https://vmltang-sugar-api.azurewebsites.net/api/postings/${postId}/grant`,
+      {
+        grantedBy: grantorId,
+        pickupTime: pickupTime
+      }
+    )
+    .toPromise();
+
+
+  }
 }

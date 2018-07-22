@@ -7,7 +7,9 @@ import { SchedulerService } from '../scheduler.service';
   styleUrls: ['./select-time.component.scss']
 })
 export class SelectTimeComponent implements OnInit {
-  @HostBinding() class = 'column justify-space-between';
+  @HostBinding() class = 'column justify-center align-center';
+
+  time: string;
 
   constructor(
     public scheduler: SchedulerService

@@ -1,5 +1,10 @@
 <h1 class="mat-display-2">What time?</h1>
 
+<mat-form-field>
+  <textarea [(ngModel)]="time" rows="2" matInput placeholder="Gimme a time"></textarea>
+</mat-form-field>
+
+
 <button
   (click)="scheduler.confirm()"
   mat-button
