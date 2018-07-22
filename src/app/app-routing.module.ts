@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
+import { OktaCallbackComponent } from '@okta/okta-angular';
 import { HomeComponent } from '@sugar/app/home/home.component';
 import { LoginComponent } from './login';
 import { AuthGuard } from './auth.guard';
