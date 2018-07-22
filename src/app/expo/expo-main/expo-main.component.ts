@@ -46,7 +46,9 @@ export class ExpoMainComponent implements OnInit {
           data: {
             headerIcon: 'check_circle',
             headerText: 'Thank you!',
-            bodyText: 'Some stuff here',
+            bodyText: `
+              We’ve sent your location and time, we'll let you know via SMS once we get a confirmation.
+            `,
             actionText: 'Done',
           }
         });
