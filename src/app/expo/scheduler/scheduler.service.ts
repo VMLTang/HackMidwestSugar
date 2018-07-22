@@ -1,4 +1,4 @@
-import { switchMap, map, take } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { UsersService } from '@sugar/app/core/user.service';
 import { PostsService } from '@sugar/app/core/posts.service';
 import { Router, ActivatedRoute } from '@angular/router';
