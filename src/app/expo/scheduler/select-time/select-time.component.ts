@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'select-time', // tslint:disable-line
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select-time.component.scss']
 })
 export class SelectTimeComponent implements OnInit {
+  @HostBinding() class = 'column justify-space-between';
 
   constructor() { }
 
