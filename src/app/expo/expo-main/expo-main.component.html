@@ -1,11 +1,15 @@
 <expo-nav></expo-nav>
-<div class="column grow p-10">
+<div *ngIf="postsExist | async" class="column grow p-10">
   <expo-card #card="card"></expo-card>
 
   <div class="back-wall p-10 justify-center align-center row" [style.opacity]="1 - card.opacity">
     <span class="mat-display-1 m-0">Notify Jennifer</span>
   </div>
 </div>
+<div *ngIf="!(postsExist | async)" class="column grow p-10">
+  <h1 class="mat-display-1">No posts yet</h1>
+</div>
+
 
 
 <!-- <div fxLayout="column">

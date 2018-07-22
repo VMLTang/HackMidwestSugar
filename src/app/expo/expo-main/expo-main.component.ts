@@ -17,6 +17,7 @@ export class ExpoMainComponent implements OnInit {
   readonly posts: Observable<Posting[]>;
   readonly currentPostId: Observable<number>;
   readonly currentPost: Observable<Posting | null>;
+  readonly postsExist: Observable<boolean>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -38,6 +39,8 @@ export class ExpoMainComponent implements OnInit {
         )
       )
     );
+
+    this.postsExist = this.currentPost.pipe(map(p => !!p));
 
     this.route.queryParamMap.pipe(
       filter((params: ParamMap) => !!params.get('confirm')),
