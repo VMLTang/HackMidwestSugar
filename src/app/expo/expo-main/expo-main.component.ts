@@ -50,30 +50,12 @@ export class ExpoMainComponent implements OnInit {
         }
       })
     );
-    // this.route.paramMap.pipe(
-    //   switchMap((params: ParamMap) => {
-    //     const postIdParam = params.get('postIdParam');
-    //     return this.postsService.posts.pipe(
-    //       map(ps => ps.find(p => p.id === postIdParam as any))
-    //     )
 
-    //     if (typeof postIdParam === 'string' && Number.isSafeInteger(+postIdParam)) {
-    //       return of(+postIdParam);
-    //     } else {
-    //       return this.postsService.firstAvailableId.pipe(
-    //         tap(id => this.router.navigate(['expo', id]))
-    //       );
-    //     }
-    //   })
-    // );
-
-    this.currentPosting = this.currentPostId.pipe(
-      switchMap(id =>
-        this.postsService.posts.pipe(
-          map(posts => posts.find(p => p.id === id) || null)
-        )
-      )
-    );
+    this.currentPosting = combineLatest(
+      this.currentPostId,
+      this.postsService.posts
+    )
+    .pipe(map(([id, posts]) => posts.find(p => p.id === id) || null));
 
     this.postingExists = this.currentPosting.pipe(map(p => !!p));
 
