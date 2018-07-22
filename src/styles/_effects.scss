@@ -1,0 +1,6 @@
+@import 'variables';
+
+@import 'effects/pulse';
+@import 'effects/pulse';
+
+@include pulse('primary', map-get($sugar-theme-primary, 'default'));

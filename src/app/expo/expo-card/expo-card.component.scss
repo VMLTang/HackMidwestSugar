@@ -2,28 +2,54 @@
 
 :host, .expo-card {
   @include mat-elevation-transition;
-  @include mat-overridable-elevation(2);
-  display: flex;
-  flex-direction: column;
+  @include mat-overridable-elevation(6);
   position: relative;
   padding: $sugar-card-padding;
   border-radius: $sugar-card-border-radius;
-
-  .header {
-
-
-  }
 
   .avatar {
     height: $sugar-card-avatar-size;
     width: $sugar-card-avatar-size;
   }
 
+  .item {
 
-  .status-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+    .frame {
+      position: relative;
+      overflow: visible;
+      height: $sugar-card-item-image-size;
+      width: $sugar-card-item-image-size;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+
+
+      &:before {
+        $bg-buffer: -0.3 * $sugar-card-item-image-size;
+        background: map-get($sugar-theme-primary, 'default');
+        content: '';
+        position: absolute;
+        top: $bg-buffer;
+        right: $bg-buffer;
+        bottom: $bg-buffer;
+        left: $bg-buffer;
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      img {
+        height: $sugar-card-item-image-size;
+        max-height: $sugar-card-item-image-size;
+      }
+    }
+
   }
+}
 
+.action-icon {
+  font-size: $sugar-card-action-icon-size;
+  height: $sugar-card-action-icon-size;
+  width: $sugar-card-action-icon-size;
 }

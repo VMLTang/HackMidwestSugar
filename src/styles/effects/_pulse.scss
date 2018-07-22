@@ -1,0 +1,74 @@
+%fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+@mixin pulse(
+  $color-name,
+  $color
+) {
+  .pulse-#{$color-name} {
+    position: relative;
+  }
+
+  .pulse-#{$color-name}:after {
+    @extend %fill;
+    content: '';
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid $color;
+    opacity: 0.5;
+    animation: ring-circle-anim 1.2s infinite ease-in-out;
+    transition: all 0.5s;
+    transform-origin: 50% 50%;
+  }
+
+  .pulse-#{$color-name}:before {
+    @extend %fill;
+    content: '';
+    background-color: rgba($color, 0.5);
+    border-radius: 50%;
+    border: none;
+    animation: ring-circle-fill-anim 2.3s infinite ease-in-out;
+    transition: all 0.5s;
+    transform-origin: 50% 50%;
+  }
+}
+
+
+@keyframes ring-circle-anim {
+  0% {
+    transform: rotate(0) scale(1.1) skew(0deg);
+    opacity: 0;
+  }
+
+  30% {
+    transform: rotate(0) scale(1.5) skew(0deg);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: rotate(0) scale(1.7) skew(0deg);
+    opacity: 0.1;
+  }
+}
+
+@keyframes ring-circle-fill-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(0deg);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: rotate(0) scale(1.4) skew(0deg);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: rotate(0) scale(1.1) skew(0deg);
+    opacity: 0.2;
+  }
+}
