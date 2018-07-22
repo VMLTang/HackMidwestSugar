@@ -5,7 +5,11 @@ import { ExpoRouterModule } from './expo-router.module';
 import { ExpoCardComponent } from './expo-card';
 import { ExpoMainComponent } from './expo-main';
 import { ExpoNavComponent } from './expo-nav';
-
+import {
+  SchedulerComponent,
+  SelectLocationComponent,
+  SelectTimeComponent,
+} from './scheduler';
 
 @NgModule({
   imports: [
@@ -16,6 +20,9 @@ import { ExpoNavComponent } from './expo-nav';
     ExpoMainComponent,
     ExpoCardComponent,
     ExpoNavComponent,
+    SchedulerComponent,
+    SelectLocationComponent,
+    SelectTimeComponent,
   ]
 })
 export class ExpoModule { }
