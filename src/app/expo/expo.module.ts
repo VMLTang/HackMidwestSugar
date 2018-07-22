@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SugarSharedModule } from '@sugar/app/shared.module';
 
+import { ExpoService } from './expo.service';
 import { ExpoRouterModule } from './expo-router.module';
 import { ConfirmationDialogComponent } from './confirmation-dialog';
 import { ExpoCardComponent } from './expo-card';
@@ -20,6 +21,9 @@ import { SchedulerModule } from './scheduler';
     ExpoMainComponent,
     ExpoCardComponent,
     ExpoNavComponent,
+  ],
+  providers: [
+    ExpoService
   ],
   entryComponents: [
     ConfirmationDialogComponent

@@ -1,9 +1,8 @@
 <expo-nav></expo-nav>
 
-<ng-template [ngIf]="!loading">
+<router-outlet></router-outlet>
 
-  <code>{{ currentPostId | async }}</code>
-  <code>postingExists {{ postingExists | async }}</code>
+<ng-template [ngIf]="!loading">
   <div *ngIf="postingExists | async" class="column grow p-10">
     <expo-card #card="card" [posting]="currentPosting | async"></expo-card>
 
@@ -14,7 +13,7 @@
   <div *ngIf="!(postingExists | async)" class="column grow p-10">
     <h1 class="mat-display-1">No posts yet</h1>
   </div>
-  <pre>{{ currentPosting | async | json }}</pre>
+  <!-- <pre>{{ currentPosting | async | json }}</pre> -->
 </ng-template>
 <div *ngIf="loading" class="column align-center justify-center m-y-40 p-x-10 gap-30">
   <h1 class="mat-headline">Checking for postings near you...</h1>

@@ -1,8 +1,9 @@
-import { Observable, of, combineLatest } from 'rxjs';
-import { filter, switchMap, map, tap, distinctUntilChanged } from 'rxjs/operators';
+import { ExpoService } from './../expo.service';
+import { Observable } from 'rxjs';
+import { filter, switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Component, OnInit, HostBinding, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { ConfirmationDialogComponent } from '../confirmation-dialog';
 import { PostsService } from '@sugar/app/core/posts.service';
 import { Posting } from '@sugar/lib';
@@ -29,35 +30,12 @@ export class ExpoMainComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     public dialog: MatDialog,
-    public postsService: PostsService
+    public postsService: PostsService,
+    public expoService: ExpoService
   ) {
-    this.currentPostId = combineLatest(
-      this.route.paramMap.pipe(
-        map(params => +(params.get('postId') || '')),
-        distinctUntilChanged()
-      ),
-      this.postsService.posts.pipe(filter(ps => ps.length > 0)),
-      this.postsService.firstAvailableId,
-    )
-    .pipe(
-      switchMap(([postIdParam, posts, firstAvailableId]) => {
-        if (posts.find(p => p.id === postIdParam)) {
-          return of(postIdParam);
-        } else {
-          return of(firstAvailableId).pipe(
-            tap(id => this.router.navigate(['expo', id]))
-          );
-        }
-      })
-    );
-
-    this.currentPosting = combineLatest(
-      this.currentPostId,
-      this.postsService.posts
-    )
-    .pipe(map(([id, posts]) => posts.find(p => p.id === id) || null));
-
-    this.postingExists = this.currentPosting.pipe(map(p => !!p));
+    this.currentPostId = this.expoService.currentPostId;
+    this.currentPosting = this.expoService.currentPosting;
+    this.postingExists = this.expoService.postingExists;
 
     this.route.queryParamMap.pipe(
       filter((params: ParamMap) => !!params.get('confirm')),
