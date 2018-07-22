@@ -1,29 +1,29 @@
-import { LayoutModule } from '@angular/cdk/layout';
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommonModule } from '@angular/common';
+
+/* @angular */
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
+/* @angular/flex-layout */
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+/* @angular/cdk */
+import { LayoutModule } from '@angular/cdk/layout';
+
+/* @angular/material */
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
-
-/* @angular */
-
-/* @angular/flex-layout */
-
-/* @angular/cdk */
-
-/* @angular/material */
 
 @NgModule({
   exports: [
     /* @angular */
-    RouterModule,
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
 
     /* @angular/flex-layout */
     FlexLayoutModule,
@@ -34,8 +34,8 @@ import { RouterModule } from '@angular/router';
     /* @angular/material */
     MatButtonModule,
     MatCardModule,
-    MatListModule,
     MatIconModule,
+    MatListModule,
     MatToolbarModule
   ],
 })

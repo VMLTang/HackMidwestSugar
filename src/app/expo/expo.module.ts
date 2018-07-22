@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { ExpoRouterModule } from './expo-router.module';
 import { ExpoMainComponent } from './expo-main';
+import { ExpoPostComponent } from './expo-post';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ExpoMainComponent } from './expo-main';
     ExpoRouterModule
   ],
   declarations: [
-    ExpoMainComponent
+    ExpoMainComponent,
+    ExpoPostComponent
   ]
 })
 export class ExpoModule { }
