@@ -1,13 +1,24 @@
 <expo-nav></expo-nav>
-<div *ngIf="postsExist | async" class="column grow p-10">
-  <expo-card #card="card"></expo-card>
 
-  <div class="back-wall p-10 justify-center align-center row" [style.opacity]="1 - card.opacity">
-    <span class="mat-display-1 m-0">Notify Jennifer</span>
+<ng-template [ngIf]="!loading">
+
+  <code>{{ currentPostId | async }}</code>
+  <code>postingExists {{ postingExists | async }}</code>
+  <div *ngIf="postingExists | async" class="column grow p-10">
+    <expo-card #card="card" [posting]="currentPosting | async"></expo-card>
+
+    <div class="back-wall p-10 justify-center align-center row" [style.opacity]="1 - card.opacity">
+      <span class="mat-display-1 m-0">Notify Jennifer</span>
+    </div>
   </div>
-</div>
-<div *ngIf="!(postsExist | async)" class="column grow p-10">
-  <h1 class="mat-display-1">No posts yet</h1>
+  <div *ngIf="!(postingExists | async)" class="column grow p-10">
+    <h1 class="mat-display-1">No posts yet</h1>
+  </div>
+  <pre>{{ currentPosting | async | json }}</pre>
+</ng-template>
+<div *ngIf="loading" class="column align-center justify-center m-y-40 p-x-10 gap-30">
+  <h1 class="mat-headline">Checking for postings near you...</h1>
+  <mat-progress-spinner [mode]="'indeterminate'" class="align-self-start justify-self-start"></mat-progress-spinner>
 </div>
 
 

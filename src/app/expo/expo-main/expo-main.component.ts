@@ -1,5 +1,5 @@
-import { Observable, of } from 'rxjs';
-import { filter, switchMap, map, tap } from 'rxjs/operators';
+import { Observable, of, combineLatest } from 'rxjs';
+import { filter, switchMap, map, tap, distinctUntilChanged } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Component, OnInit, HostBinding, ChangeDetectionStrategy } from '@angular/core';
@@ -10,14 +10,20 @@ import { Posting } from '@sugar/lib';
 @Component({
   templateUrl: './expo-main.component.html',
   styleUrls: ['./expo-main.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpoMainComponent implements OnInit {
-  @HostBinding() class = 'column justify-space-between';
+  @HostBinding()
+  get class() {
+    return this.loading
+      ? 'column justify-start'
+      : 'column justify-space-between';
+  }
+
+  loading = false;
   readonly posts: Observable<Posting[]>;
   readonly currentPostId: Observable<number>;
-  readonly currentPost: Observable<Posting | null>;
-  readonly postsExist: Observable<boolean>;
+  readonly currentPosting: Observable<Posting | null>;
+  readonly postingExists: Observable<boolean>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -25,20 +31,43 @@ export class ExpoMainComponent implements OnInit {
     public dialog: MatDialog,
     public postsService: PostsService
   ) {
-    this.currentPostId = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        const postId = params.get('postId');
-        if (typeof postId === 'string' && Number.isSafeInteger(+postId)) {
-          return of(+postId);
+    this.currentPostId = combineLatest(
+      this.route.paramMap.pipe(
+        map(params => +(params.get('postId') || '')),
+        distinctUntilChanged()
+      ),
+      this.postsService.posts.pipe(filter(ps => ps.length > 0)),
+      this.postsService.firstAvailableId,
+    )
+    .pipe(
+      switchMap(([postIdParam, posts, firstAvailableId]) => {
+        if (posts.find(p => p.id === postIdParam)) {
+          return of(postIdParam);
         } else {
-          return this.postsService.firstAvailableId.pipe(
+          return of(firstAvailableId).pipe(
             tap(id => this.router.navigate(['expo', id]))
           );
         }
       })
     );
+    // this.route.paramMap.pipe(
+    //   switchMap((params: ParamMap) => {
+    //     const postIdParam = params.get('postIdParam');
+    //     return this.postsService.posts.pipe(
+    //       map(ps => ps.find(p => p.id === postIdParam as any))
+    //     )
 
-    this.currentPost = this.currentPostId.pipe(
+    //     if (typeof postIdParam === 'string' && Number.isSafeInteger(+postIdParam)) {
+    //       return of(+postIdParam);
+    //     } else {
+    //       return this.postsService.firstAvailableId.pipe(
+    //         tap(id => this.router.navigate(['expo', id]))
+    //       );
+    //     }
+    //   })
+    // );
+
+    this.currentPosting = this.currentPostId.pipe(
       switchMap(id =>
         this.postsService.posts.pipe(
           map(posts => posts.find(p => p.id === id) || null)
@@ -46,7 +75,7 @@ export class ExpoMainComponent implements OnInit {
       )
     );
 
-    this.postsExist = this.currentPost.pipe(map(p => !!p));
+    this.postingExists = this.currentPosting.pipe(map(p => !!p));
 
     this.route.queryParamMap.pipe(
       filter((params: ParamMap) => !!params.get('confirm')),
@@ -73,8 +102,15 @@ export class ExpoMainComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.postsService.getPostings();
+  async ngOnInit() {
+    try {
+      this.loading = true;
+      await this.postsService.getPostings();
+      this.loading = false;
+    } catch (err) {
+      console.error(err);
+      this.loading = false;
+    }
   }
 
 }

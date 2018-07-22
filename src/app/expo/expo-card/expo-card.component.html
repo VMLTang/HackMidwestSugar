@@ -1,6 +1,6 @@
 <div class="row justify-space-between m-b-5">
-    <p class="subheading-1 m-0">12 minutes ago</p>
-  <span class="mat-caption">~1000 ft. away</span>
+  <p class="subheading-1 m-0">{{ posting.createdAt | fromNow }}</p>
+  <p class="subheading-1 m-0">Expires {{ posting.expiresAt | fromNow }}</p>
 </div>
 
 <mat-divider></mat-divider>
@@ -10,7 +10,7 @@
   <img class="avatar circle" src="/assets/avatar.png">
 
   <div class="column gap-0">
-    <h1 class="mat-headline">Jennifer</h1>
+    <h1 class="mat-headline">{{ posting.createdBy?.name }}</h1>
   </div>
 </div>
 
@@ -30,3 +30,4 @@
   <mat-icon class="action-icon pulse-primary" color="primary">arrow_upward</mat-icon>
   <p class="mat-headline m-0">Swipe to help</p>
 </div>
+<!-- <pre>{{ posting | json }}</pre> -->

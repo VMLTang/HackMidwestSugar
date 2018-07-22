@@ -15,6 +15,7 @@ export class PostsService {
   constructor(
     private http: HttpClient,
   ) {
+    window['PostsService'] = this;
     this.posts = this.posts$.asObservable();
 
 
