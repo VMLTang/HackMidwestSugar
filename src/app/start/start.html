@@ -1,9 +1,9 @@
 <div class="register-container">
-    <div [ngClass]="{'LOCATION':'register-location','PHONE NUMBER':'register-phone-number','NAME':'register-name' }[registerStep$ | async]">
+    <div [ngClass]="{'LOCATION':'register-location','PHONE NUMBER':'register-phone-number','NAME':'register-name', 'SUBMITTING': 'register-submitting' }[registerStep$ | async]">
         <ul>
             <li class="register-card">
-                <form class="starter-form row justify-center">
-                    <mat-form-field class='row'>
+                <form class="starter-form justify-center column">
+                    <mat-form-field>
                         <input matInput placeholder="Your zip code" [formControl]="locationFormControl" [errorStateMatcher]="locationMatcher">
                         <mat-hint>Errors appear instantly!</mat-hint>
                         <mat-error *ngIf="locationFormControl.hasError('required')">
@@ -11,11 +11,11 @@
                             <strong>required</strong>
                         </mat-error>
                     </mat-form-field>
-                    <button class="row" (click)="submitZipCode()" mat-raised-button color="primary">Submit</button>
+                    <button (click)="submitZipCode()" mat-raised-button color="primary">Submit</button>
                 </form>
             </li>
             <li class="register-card">
-                <form class="starter-form">
+                <form class="starter-form  justify-center column">
                     <mat-form-field>
                         <input #phonenumber matInput placeholder="Phone Number" [formControl]="phoneNumberFormControl" [errorStateMatcher]="phoneNumberMatcher">
                         <mat-hint>Errors appear instantly!</mat-hint>
@@ -28,7 +28,7 @@
                 </form>
             </li>
             <li class="register-card">
-                <form class="starter-form">
+                <form class="starter-form  justify-center column">
                     <mat-form-field>
                         <input #name matInput placeholder="Name" [formControl]="nameFormControl" [errorStateMatcher]="nameMatcher">
                         <mat-hint>Errors appear instantly!</mat-hint>
@@ -40,6 +40,12 @@
                     <button (click)="submitName()" mat-raised-button color="primary">Submit</button>
                 </form>
             </li>
+            <li class="register-card">
+                    <mat-progress-spinner [mode]="'indeterminate'" class="starter-form justify-center column"></mat-progress-spinner>
+
+                </li>
+
+            
         </ul>
     </div>
 </div>
