@@ -1,4 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { SchedulerService } from '../scheduler.service';
 
 @Component({
   selector: 'select-location', // tslint:disable-line
@@ -8,7 +9,11 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 export class SelectLocationComponent implements OnInit {
   @HostBinding() class = 'column justify-space-between';
 
-  constructor() { }
+  constructor(
+    public scheduler: SchedulerService
+  ) {
+    window['SelectLocationComponent'] = this;
+  }
 
   ngOnInit() {
   }

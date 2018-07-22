@@ -1,0 +1,14 @@
+<div class="column align-start justify-stretch gap-20">
+  <div class="column align-center gap-10" style="width: 100%">
+    <mat-icon *ngIf="data.headerIcon" style="font-size: 36px; width: 36px; height: 36px;">{{ data.headerIcon }}</mat-icon>
+    <h1 *ngIf="data.headerText" mat-dialog-title class="mat-display-1">{{ data.headerText }}</h1>
+  </div>
+  <p class="mat-body-1">{{ data.bodyText }}</p>
+  <div class="row justify-end" style="width: 100%">
+    <button mat-button color="primary" [mat-dialog-close]="true">{{ data.actionText || 'Done' }}</button>
+  </div>
+</div>
+<!-- <mat-dialog-content *ngIf="data.bodyText" class="mat-body-1">{{ data.bodyText }}</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" [mat-dialog-close]="true">{{ data.actionText || 'Done' }}</button>
+</mat-dialog-actions> -->

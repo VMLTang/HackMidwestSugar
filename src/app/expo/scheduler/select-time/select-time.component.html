@@ -1,7 +1,8 @@
 <h1 class="mat-display-2">What time?</h1>
 
 <button
-  [routerLink]="['..', 'location']"
-  mat-button color="primary">
-  Set a location
+  (click)="scheduler.confirm()"
+  mat-button
+  color="primary">
+  Confirm
 </button>

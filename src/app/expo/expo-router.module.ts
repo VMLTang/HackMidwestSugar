@@ -26,7 +26,7 @@ const expoRoutes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'time',
+        redirectTo: 'location',
       }
     ]
   },
