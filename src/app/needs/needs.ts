@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NeedsService } from '@sugar/app/needs/needs.service';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Component({
     selector: 'sugar-needs',
@@ -6,6 +8,8 @@ import { Component } from '@angular/core';
     styleUrls: ['./needs.scss']
 })
 export class NeedsComponent {
-
-    constructor() { }
+    public needs$: Observable<any>;
+    constructor(private needsService: NeedsService) {
+        this.needs$ = this.needsService.getNeeds();
+     }
 }

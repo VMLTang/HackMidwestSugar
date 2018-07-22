@@ -8,7 +8,7 @@ import { NeedsComponent } from '@sugar/app/needs/needs';
 
 const routes: Routes = [
   {
-    path: '/needs',
+    path: 'needs',
     component: NeedsComponent
   },
   {

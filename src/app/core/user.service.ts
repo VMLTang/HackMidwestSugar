@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { StarterUser } from '@sugar/app/start/start.types';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
+import { BehaviorSubject, Observable } from '../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
+    private userSubject: BehaviorSubject<StarterUser | null> = new BehaviorSubject<StarterUser | null>(null);
 
+    public user$: Observable<StarterUser | null> = this.userSubject.asObservable();
   constructor(private http: HttpClient) {
   }
 
@@ -17,7 +20,10 @@ export class UsersService {
       {
             cellNumber: user.phoneNumber,
             name: user.name
-      }).subscribe(value => console.log(value));
+      }).subscribe(value =>  {
+          console.log(value);
+          this.userSubject.next(user);
+        });
 
   }
 }

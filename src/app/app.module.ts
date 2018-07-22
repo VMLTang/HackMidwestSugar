@@ -1,6 +1,5 @@
-import * as Hammer from 'hammerjs';
 import { NgModule } from '@angular/core';
-import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OktaAuthModule } from '@okta/okta-angular';
 import { AppRoutingModule } from '@sugar/app/app-routing.module';
@@ -14,6 +13,8 @@ import { NeedsModule } from '@sugar/app/needs/needs.module';
 import { SugarSharedModule } from '@sugar/app/shared.module';
 import { SugarFeedModule } from '@sugar/app/sugar-feed/sugar-feed.module';
 import { environment } from '@sugar/environments/environment';
+import * as Hammer from 'hammerjs';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '../../node_modules/@angular/common/http';
 
 export class HammerConfig extends HammerGestureConfig  {
   readonly overrides = {
