@@ -7,7 +7,7 @@ import { Component, OnInit, ChangeDetectionStrategy, HostBinding } from '@angula
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpoCardComponent implements OnInit {
-  @HostBinding() class = 'expo-card';
+  @HostBinding() class = 'column gap-20';
 
   constructor() { }
 
