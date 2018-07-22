@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ChangeDetectionStrategy, HostBinding, HostListener } from '@angular/core';
 
 @Component({
@@ -19,7 +20,10 @@ export class ExpoCardComponent implements OnInit {
   @HostBinding('style.transition')
   transition = 'transform .05s ease-in-out';
 
-  constructor() { }
+  constructor(
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
   }
@@ -38,9 +42,10 @@ export class ExpoCardComponent implements OnInit {
     return Number.isSafeInteger(+y) ? +y : 0;
   }
 
-  startInteraction() {
-    // TODO: GO TO INTERACTION FLOW
-    console.log('START INTERACTION');
+  startInteractionScheduler() {
+    this.router.navigate(['schedule'], {
+      relativeTo: this.route
+    });
   }
 
   @HostListener('panstart', ['$event'])
@@ -62,13 +67,13 @@ export class ExpoCardComponent implements OnInit {
       : $event.deltaY;
 
     if (this.translateY > 500) {
-      this.startInteraction();
+      this.startInteractionScheduler();
     }
   }
 
   @HostListener('swipeup', ['$event'])
   onSwipe($event: any) {
-    this.startInteraction();
+    this.startInteractionScheduler();
   }
 
 }

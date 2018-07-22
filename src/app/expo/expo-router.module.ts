@@ -2,12 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ExpoMainComponent } from './expo-main';
-import { SchedulerComponent, SelectLocationComponent, SelectTimeComponent } from './scheduler';
+
+import {
+  SelectLocationComponent,
+  SelectTimeComponent,
+  SchedulerMainComponent
+} from './scheduler';
+
 
 const expoRoutes: Routes = [
   {
     path: 'schedule',
-    component: SchedulerComponent,
+    component: SchedulerMainComponent,
     children: [
       {
         path: 'location',
