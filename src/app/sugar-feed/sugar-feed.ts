@@ -10,7 +10,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class SugarFeedComponent {
   public sugarFeed$: Observable<Transaction[]>;
-  private whichFeedSubject: BehaviorSubject<'MAP' | 'LIST'> = new BehaviorSubject<'MAP' | 'LIST'>('LIST');
+  private whichFeedSubject: BehaviorSubject<'MAP' | 'LIST'> = new BehaviorSubject<'MAP' | 'LIST'>('MAP');
 
   public whichFeed$: Observable<'MAP' | 'LIST'> = this.whichFeedSubject.asObservable();
 

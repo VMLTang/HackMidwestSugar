@@ -1,0 +1,45 @@
+<div class="register-container">
+    <div [ngClass]="{'LOCATION':'register-location','PHONE NUMBER':'register-phone-number','NAME':'register-name' }[registerStep$ | async]">
+        <ul>
+            <li class="register-card">
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Your zip code" [formControl]="locationFormControl" [errorStateMatcher]="locationMatcher">
+                        <mat-hint>Errors appear instantly!</mat-hint>
+                        <mat-error *ngIf="locationFormControl.hasError('required')">
+                            Your zip code
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <button (click)="submitZipCode()" mat-raised-button color="primary">Submit</button>
+                </form>
+            </li>
+            <li class="register-card">
+                <form class="register-form">
+                    <mat-form-field class="example-full-width">
+                        <input #phonenumber matInput placeholder="Phone Number" [formControl]="phoneNumberFormControl" [errorStateMatcher]="phoneNumberMatcher">
+                        <mat-hint>Errors appear instantly!</mat-hint>
+                        <mat-error *ngIf="phoneNumberFormControl.hasError('required')">
+                            Your phone number is
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <button (click)="submitPhoneNumber()" mat-raised-button color="primary">Submit</button>
+                </form>
+            </li>
+            <li class="register-card">
+                <form class="register-form">
+                    <mat-form-field class="example-full-width">
+                        <input #name matInput placeholder="Name" [formControl]="nameFormControl" [errorStateMatcher]="nameMatcher">
+                        <mat-hint>Errors appear instantly!</mat-hint>
+                        <mat-error *ngIf="nameFormControl.hasError('required')">
+                            Your name is
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <button (click)="submitName()" mat-raised-button color="primary">Submit</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

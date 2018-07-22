@@ -1,0 +1,42 @@
+.register-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    z-index: 99;
+
+    ul {
+        list-style: none;
+    }
+}
+
+.register-location {
+    width: 300%;
+    transform: translateX(0%);
+    -webkit-transition: 400ms ease-out;
+    -moz-transition: 400ms ease-out;
+    -o-transition: 400ms ease-out;
+  }
+  
+  .register-phone-number {
+    width: 300%;
+    transform: translateX(-33%);
+    -webkit-transition: 400ms ease-out;
+    -moz-transition: 400ms ease-out;
+    -o-transition: 400ms ease-out;
+  }
+
+  .register-name {
+    width: 300%;
+    transform: translateX(-66%);
+    -webkit-transition: 400ms ease-out;
+    -moz-transition: 400ms ease-out;
+    -o-transition: 400ms ease-out;
+  }
+
+.register-card {
+    width: 33%;
+    float: left;
+    height: 100vh;
+    background-color: rgba(232.0, 232.0, 232.0, 0.25);
+}
