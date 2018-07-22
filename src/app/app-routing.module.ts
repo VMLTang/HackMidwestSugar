@@ -19,12 +19,12 @@ const routes: Routes = [
   {
     path: 'expo/:postId',
     loadChildren: 'src/app/expo/expo.module#ExpoModule',
-    canActivate: [ AuthGuard ],
+    // canActivate: [ AuthGuard ],
   },
   {
     path: 'expo',
     loadChildren: 'src/app/expo/expo.module#ExpoModule',
-    canActivate: [ AuthGuard ],
+    // canActivate: [ AuthGuard ],
   },
   {
     path: 'home',

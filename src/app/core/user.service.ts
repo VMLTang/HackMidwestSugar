@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StarterUser } from '@sugar/app/start/start.types';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { BehaviorSubject, Observable } from '../../../node_modules/rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

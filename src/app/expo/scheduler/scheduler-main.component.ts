@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
 import { SchedulerService } from './scheduler.service';
+import { PostsService } from '@sugar/app/core/posts.service';
 
 @Component({
   templateUrl: './scheduler-main.component.html',
@@ -14,11 +15,17 @@ export class SchedulerMainComponent implements OnInit, OnDestroy {
 
   constructor(
     public scheduler: SchedulerService,
+    public postsService: PostsService,
   ) {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    try {
+      await this.postsService.getPostings();
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   ngOnDestroy() {

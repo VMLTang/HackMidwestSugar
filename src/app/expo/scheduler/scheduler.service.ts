@@ -20,21 +20,10 @@ export class SchedulerService {
   }
 
   async confirm() {
-    await this.postsService.grantPosting(
-      this.userService.userId! as any,
-      (new Date()).toUTCString(),
-    );
-
-    this.router.navigate(['..'], {
-      relativeTo: this.route,
-      queryParams: {
-        confirm: true
-      }
-    });
-
-
+    console.log('confirm');
     this.expoService.currentPostId.pipe(
       switchMap(postId => {
+        console.log(`post id ${postId}`);
         return from(this.postsService.grantPosting(
           postId,
           this.userService.userId! as any,
@@ -42,15 +31,14 @@ export class SchedulerService {
         ));
       })
     )
-    // )
-    // .subscribe(() => {
-    //   this.router.navigate(['..'], {
-    //     relativeTo: this.route,
-    //     queryParams: {
-    //       confirm: true
-    //     }
-    //   });
-    // }, console.error)
+    .subscribe(() => {
+      this.router.navigate(['..'], {
+        relativeTo: this.route,
+        queryParams: {
+          confirm: true
+        }
+      });
+    }, console.error);
 
     //   .subscribe(user =)
     // const user = this.userService.user$.g
