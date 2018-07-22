@@ -5,6 +5,7 @@ $sugar-theme-accent: mat-palette($mat-yellow, 400);
 $sugar-theme-warn: mat-palette($mat-deep-orange, 600);
 $sugar-theme: mat-light-theme($sugar-theme-primary, $sugar-theme-accent, $sugar-theme-warn);
 
+
 $sugar-unit-size: 1rem;
 
 $sugar-unit-ratios: (
@@ -32,5 +33,7 @@ $sugar-direction-labels: (
 /* Cards */
 $sugar-card-padding: 24px 16px !default;
 $sugar-card-border-radius: 2px !default;
-$sugar-card-header-size: 60px !default;
-$sugar-card-avatar-size: 60px !default;
+$sugar-card-header-size: 80px !default;
+$sugar-card-item-image-size: 140px !default;
+$sugar-card-action-icon-size: 36px !default;
+$sugar-card-avatar-size: 80px !default;
