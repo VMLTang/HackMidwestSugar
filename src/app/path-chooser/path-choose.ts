@@ -77,6 +77,7 @@ export class PathChooserComponent implements AfterViewInit {
     }
 
     public onINeed(): void {
-        this.router.navigateByUrl('/need');
+        console.log('go');
+        this.router.navigateByUrl('/needs/new');
     }
 }

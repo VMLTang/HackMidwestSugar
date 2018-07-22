@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { GeolocationService } from '@sugar/app/core/geolocation.service';
+import { Injectable } from '@angular/core';
 import { Posting } from '@sugar/lib';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +12,7 @@ export class PostsService {
   readonly posts: Observable<Posting[]>;
 
   constructor(
-    private http: HttpClient,
-    private locationService: GeolocationService
+    private http: HttpClient
   ) {
     this.posts = this.posts$.asObservable();
 
