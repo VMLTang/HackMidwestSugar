@@ -1,5 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     /* @angular */
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
 

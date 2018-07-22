@@ -17,6 +17,8 @@ const hereConfig = {
 export const environment = {
   production: false,
   oktaConfig: oktaDevConfig,
+  oktaDomain: 'https://dev-974784.oktapreview.com',
+  oktaGoogleIdpId: '0oafs6wsov96R1Vg50h7',
   hereConfig: hereConfig
 };
 
