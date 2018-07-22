@@ -8,4 +8,8 @@ export class SchedulerService {
   ) {
     console.log(`I'm the SchedulerService`);
   }
+
+  destroy() {
+    console.log('destroying the scheduler service');
+  }
 }

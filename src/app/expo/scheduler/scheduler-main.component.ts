@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SchedulerService } from './scheduler.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { SchedulerService } from './scheduler.service';
     SchedulerService
   ]
 })
-export class SchedulerMainComponent implements OnInit {
+export class SchedulerMainComponent implements OnInit, OnDestroy {
 
   constructor(
     public scheduler: SchedulerService
@@ -17,6 +17,10 @@ export class SchedulerMainComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.scheduler.destroy();
   }
 
 }
