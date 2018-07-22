@@ -10,6 +10,6 @@ import { Observable } from '../../../node_modules/rxjs';
 export class NeedsComponent {
     public needs$: Observable<any>;
     constructor(private needsService: NeedsService) {
-        this.needs$ = this.needsService.getNeeds();
+        this.needs$ = this.needsService.needs$;
      }
 }
