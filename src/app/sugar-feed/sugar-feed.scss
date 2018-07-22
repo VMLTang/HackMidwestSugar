@@ -28,30 +28,32 @@
 }
 
 .map-up {
-    transform: translateY(0vh);
-    -webkit-transition: 1000ms ease-out;
-    -moz-transition: 1000ms ease-out;
-    -o-transition: 1000ms ease-out;
 }
 
 .map-down {
-    transform: translateY(50vh);
-    -webkit-transition: 1000ms ease-out;
-    -moz-transition: 1000ms ease-out;
-    -o-transition: 1000ms ease-out;
+}
+
+.path-up {
+    margin-top: -50vh
+}
+
+.path-down {
+    margin-top: 0vh;
 }
 
 .fadeIn {
-    opacity: 1.0;
-    -webkit-transition: 1000ms ease-out;
-    -moz-transition: 1000ms ease-out;
-    -o-transition: 1000ms ease-out;
+    display: block;
 }
 
 .fadeOut {
-    opacity: 0.0;
-    -webkit-transition: 1000ms ease-out;
-    -moz-transition: 1000ms ease-out;
-    -o-transition: 1000ms ease-out;
+    display: none;
 
 }
+
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }

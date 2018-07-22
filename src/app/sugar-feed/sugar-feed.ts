@@ -25,6 +25,7 @@ export class SugarFeedComponent {
   }
 
   public showFeedView(view: 'MAP' | 'LIST'): void {
+    console.log('view:', view);
       this.whichFeedSubject.next(view);
   }
 }

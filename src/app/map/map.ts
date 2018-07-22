@@ -22,14 +22,13 @@ export class MapComponent implements AfterViewInit {
 
     public ngAfterViewInit() {
         this.mapService.mapOptions$.subscribe(value => {
-            console.log('HERE');
             if (this.map) {
                 this.setZoom(value.zoom);
                 this.setCenter(value.center);
             } else {
                 this.map = new H.Map(
                     this.element.nativeElement,
-                    this.defaultLayers.normal.map,
+                    this.defaultLayers.terrain.map,
                     value);
             }
         });
