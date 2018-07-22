@@ -12,3 +12,46 @@
 .toolbar-button {
     cursor: pointer;
 }
+
+.map-full-height {
+    height: 100vh;
+    -webkit-transition: 1000ms ease-out;
+    -moz-transition: 1000ms ease-out;
+    -o-transition: 1000ms ease-out;
+}
+
+.map-half-height {
+    height: 50vh;
+    -webkit-transition: 1000ms ease-out;
+    -moz-transition: 1000ms ease-out;
+    -o-transition: 1000ms ease-out;
+}
+
+.map-up {
+    transform: translateY(0vh);
+    -webkit-transition: 1000ms ease-out;
+    -moz-transition: 1000ms ease-out;
+    -o-transition: 1000ms ease-out;
+}
+
+.map-down {
+    transform: translateY(50vh);
+    -webkit-transition: 1000ms ease-out;
+    -moz-transition: 1000ms ease-out;
+    -o-transition: 1000ms ease-out;
+}
+
+.fadeIn {
+    opacity: 1.0;
+    -webkit-transition: 1000ms ease-out;
+    -moz-transition: 1000ms ease-out;
+    -o-transition: 1000ms ease-out;
+}
+
+.fadeOut {
+    opacity: 0.0;
+    -webkit-transition: 1000ms ease-out;
+    -moz-transition: 1000ms ease-out;
+    -o-transition: 1000ms ease-out;
+
+}

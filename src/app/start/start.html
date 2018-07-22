@@ -4,10 +4,10 @@
             <li class="register-card">
                 <form class="starter-form justify-center column">
                     <mat-form-field>
-                        <input matInput placeholder="Your zip code" [formControl]="locationFormControl" [errorStateMatcher]="locationMatcher">
+                        <input matInput placeholder="Your address" [formControl]="locationFormControl" [errorStateMatcher]="locationMatcher">
                         <mat-hint>Errors appear instantly!</mat-hint>
                         <mat-error *ngIf="locationFormControl.hasError('required')">
-                            Your zip code
+                            Your address
                             <strong>required</strong>
                         </mat-error>
                     </mat-form-field>
