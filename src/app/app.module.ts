@@ -1,5 +1,6 @@
+import * as Hammer from 'hammerjs';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OktaAuthModule } from '@okta/okta-angular';
 import { SugarFeedModule } from '@sugar/app/sugar-feed/sugar-feed.module';
@@ -14,7 +15,16 @@ import { SugarSharedModule } from './shared.module';
 import { LoginComponent } from './login';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
+export class HammerConfig extends HammerGestureConfig  {
+  readonly overrides = {
+    swipe: {
+      direction: Hammer.DIRECTION_VERTICAL
+    },
+    pan: {
+      direction: Hammer.DIRECTION_ALL
+    }
+  };
+}
 
 @NgModule({
   declarations: [
@@ -27,6 +37,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
+    },
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerConfig
     }
   ],
   imports: [
