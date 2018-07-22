@@ -23,13 +23,13 @@ export class NeedsService {
     }
 
     public submitNeed(): void {
-        this.http.post<any>('api/needs', {
-            user: this.user
+        this.http.post<any>('api/postings', {
+            createdBy: this.user.userId
         }).subscribe(value => { console.log(value); });
     }
 
     public getNeeds(): Observable<any> {
-        return this.http.get('/api/needs', {
+        return this.http.get('/api/postings', {
             params: {
               cellNumber: 'id1234'
             },

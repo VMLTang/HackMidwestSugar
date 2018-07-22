@@ -22,7 +22,9 @@ export class UsersService {
             name: user.name
       }).subscribe(value =>  {
           console.log(value);
-          this.userSubject.next(user);
+          const newUser: StarterUser = { ...user};
+          newUser.userId = value.id;
+          this.userSubject.next(newUser);
         });
 
   }
