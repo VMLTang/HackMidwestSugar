@@ -73,7 +73,7 @@ export class PathChooserComponent implements AfterViewInit {
     }
 
     public onIHave(): void  {
-        this.router.navigateByUrl('/have');
+        this.router.navigateByUrl('/haves/new');
     }
 
     public onINeed(): void {
