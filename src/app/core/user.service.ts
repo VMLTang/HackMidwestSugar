@@ -19,6 +19,7 @@ export class UsersService {
       .post<any>('https://vmltang-sugar-api.azurewebsites.net/api/users',
       {
             cellNumber: user.phoneNumber,
+            location: user.location,
             name: user.name
       }).subscribe(value =>  {
           console.log(value);
