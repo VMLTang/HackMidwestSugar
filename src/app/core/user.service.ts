@@ -25,6 +25,7 @@ export class UsersService {
           console.log(value);
           const newUser: StarterUser = { ...user};
           newUser.userId = value.id;
+          newUser.location = user.location;
           this.userSubject.next(newUser);
         });
 

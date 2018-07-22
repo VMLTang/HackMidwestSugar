@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
+import { PostsService } from '@sugar/app/core/posts.service';
 import { MapService } from '@sugar/app/map/map-service';
 import { environment } from '@sugar/environments/environment.prod';
 import { MapPoint } from '@sugar/lib';
@@ -17,7 +18,8 @@ export class MapComponent implements AfterViewInit {
 
     constructor(
         private element: ElementRef,
-        private mapService: MapService
+        private mapService: MapService,
+        private postService: PostsService
     ) { }
 
     public ngAfterViewInit() {
@@ -32,6 +34,25 @@ export class MapComponent implements AfterViewInit {
                     value);
             }
         });
+
+        this.postService.getPostings();
+
+        this.postService.posts.subscribe(posts => {
+            posts.map(post => {
+                if (post.pickupLocation && post.pickupLocation.lat && post.pickupLocation.long) {
+                    // tslint:disable-next-line:max-line-length
+                const svgMarkup = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>`;
+
+                                const icon = new H.map.Icon(svgMarkup);
+                                const coords = {lat: post.pickupLocation.lat, lng: post.pickupLocation.long};
+                                const marker = new H.map.Marker(coords, {icon: icon});
+
+                                this.map.addObject(marker);
+                }
+            });
+        });
+
+
     }
 
     public setCenter(center: MapPoint): void {

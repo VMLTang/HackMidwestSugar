@@ -1,8 +1,8 @@
-<mat-card class="example-card">
+<mat-card>
     <mat-card-header>
       <div mat-card-avatar><img src="sdfd"/></div>
-      <mat-card-title>Jennifer gave Nate two potatoes</mat-card-title>
-      <mat-card-subtitle><i class="fas fa-map-pin pinpoint"></i>Rivermarket Exchange</mat-card-subtitle>
+      <mat-card-title>{{post?.content?.message}}</mat-card-title>
+      <mat-card-subtitle><i class="fas fa-map-pin pinpoint"></i>{{location$ | async}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
       <button mat-button>LIKE</button>

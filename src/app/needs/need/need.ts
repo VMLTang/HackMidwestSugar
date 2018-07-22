@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostsService } from '@sugar/app/core/posts.service';
 import { NeedsService } from '@sugar/app/needs/needs.service';
 import { FormControl, Validators } from '../../../../node_modules/@angular/forms';
 import { Router } from '../../../../node_modules/@angular/router';
@@ -12,7 +13,8 @@ export class NeedComponent {
     public needsFormControl: FormControl;
     constructor(
         private router: Router,
-        private needsService: NeedsService
+        private needsService: NeedsService,
+        private postsService: PostsService
     ) {
         this.needsFormControl = new FormControl('', [
             Validators.required
@@ -24,7 +26,8 @@ export class NeedComponent {
     }
 
     public submitNeed(): void {
-        console.log('submit');
         this.needsService.submitNeed(this.needsFormControl.value);
+        this.postsService.getPostings();
+        this.router.navigateByUrl('/home');
     }
 }
