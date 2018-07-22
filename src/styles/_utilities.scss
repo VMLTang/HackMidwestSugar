@@ -1,7 +1,14 @@
 @import 'variables';
 
+@import 'utility-mixins/flexbox';
 @import 'utility-mixins/margin';
 @import 'utility-mixins/padding';
+
+@include flexbox-utility-classes(
+  $sugar-unit-size,
+  $sugar-unit-ratios
+);
+
 
 @include margin-utility-classes(
   $sugar-unit-size,
@@ -14,3 +21,7 @@
   $sugar-unit-ratios,
   $sugar-direction-labels
 );
+
+.circle {
+  border-radius: 50% !important;
+}
