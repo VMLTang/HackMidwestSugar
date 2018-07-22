@@ -1,13 +1,7 @@
-import {
-    AfterViewInit,
-    Component,
-    ElementRef,
-    Input,
-    OnChanges,
-    SimpleChanges
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
+import { MapService } from '@sugar/app/map/map-service';
 import { environment } from '@sugar/environments/environment.prod';
-import { MapLocationOptions, MapPoint } from '@sugar/lib';
+import { MapPoint } from '@sugar/lib';
 
 declare const H: any;
 
@@ -16,48 +10,36 @@ declare const H: any;
     templateUrl: './map.html',
     styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements AfterViewInit, OnChanges {
-    @Input() mapLocationOptions: MapLocationOptions;
+export class MapComponent implements AfterViewInit {
     private map: any;
     private platform = new H.service.Platform(environment.hereConfig);
     private defaultLayers = this.platform.createDefaultLayers();
 
     constructor(
-        private element: ElementRef
-    ) {
-        console.log('here');
-    }
+        private element: ElementRef,
+        private mapService: MapService
+    ) { }
 
     public ngAfterViewInit() {
-    }
-
-    public ngOnChanges(changes: SimpleChanges): void {
-        console.log('changed', changes, this.mapLocationOptions);
-        if (changes.mapLocationOptions) {
-            if (changes.mapLocationOptions.firstChange) {
-                console.log('first change');
+        this.mapService.mapOptions$.subscribe(value => {
+            console.log('HERE');
+            if (this.map) {
+                this.setZoom(value.zoom);
+                this.setCenter(value.center);
+            } else {
                 this.map = new H.Map(
                     this.element.nativeElement,
                     this.defaultLayers.normal.map,
-                    this.mapLocationOptions);
-            } else {
-                if (changes.mapLocationOptions.currentValue.zoom !== this.map.getZoom()) {
-                    this.setZoom(changes.mapLocationOptions.currentValue.zoom);
-                }
-
-                // tslint:disable-next-line:max-line-length
-                if (changes.mapLocationOptions.currentValue.center.lat !== changes.mapLocationOptions.currentValue.center.lat || changes.mapLocationOptions.currentValue.center.lat !== changes.mapLocationOptions.currentValue.center.lat) {
-                    this.setCenter(changes.mapLocationOptions.currentValue.center);
-                }
+                    value);
             }
-        }
+        });
     }
 
     public setCenter(center: MapPoint): void {
-        this.map.setCenter(center, true);
-    }
+    this.map.setCenter(center, true);
+}
 
     public setZoom(zoom: number): void {
-        this.map.setZoom(zoom, true);
-    }
+    this.map.setZoom(zoom, true);
+}
 }

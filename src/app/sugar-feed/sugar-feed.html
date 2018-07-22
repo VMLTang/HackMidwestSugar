@@ -1,22 +1,25 @@
-<sugar-start></sugar-start>
-<mat-toolbar-row class="mat-toolbar-row">
-    <span>Activity Feed</span>
-    <span class="spacer"></span>
-    <mat-icon (click)="showFeedView('LIST')" class="mat-icon material-icons toolbar-button" role="img" aria-hidden="true">
-        <i class="material-icons">
-            format_list_bulleted
-        </i>
-    </mat-icon>
-    <mat-icon (click)="showFeedView('MAP')" class="mat-icon material-icons toolbar-button" role="img" aria-hidden="true">
-        <i class="material-icons">
-            location_on
-        </i>
-    </mat-icon>
-</mat-toolbar-row>
-<div style="width: 100%; height: 100vh">
-    <mat-list *ngIf="(whichFeed$ | async) === 'LIST'">
-        <sugar-feed-card mat-list-item *ngFor="let transactions of sugarFeed$ | async">
-        </sugar-feed-card>
-    </mat-list>
-    <sugar-map *ngIf="(whichFeed$ | async) === 'MAP'" [mapLocationOptions]="{zoom: 5, center: {lng:13.4, lat: 52.51} }"></sugar-map>
+<sugar-start [ngClass]="{false:'fadeOut',true:'fadeIn' }[hasStart$ | async]"></sugar-start>
+<div [ngClass]="{false:'map-down',true:'map-up' }[hasStart$ | async]">
+    <mat-toolbar-row style="display: block"  *ngIf="(hasStart$ | async) === false"
+        class="mat-toolbar-row">
+        <span>Activity Feed</span>
+        <span class="spacer"></span>
+        <mat-icon (click)="showFeedView('LIST')" class="mat-icon material-icons toolbar-button" role="img" aria-hidden="true">
+            <i class="material-icons">
+                format_list_bulleted
+            </i>
+        </mat-icon>
+        <mat-icon (click)="showFeedView('MAP')" class="mat-icon material-icons toolbar-button" role="img" aria-hidden="true">
+            <i class="material-icons">
+                location_on
+            </i>
+        </mat-icon>
+    </mat-toolbar-row>
+    <div style="width: 100%" [ngClass]="{false:'map-half-height',true:'map-full-height' }[hasStart$ | async]">
+        <mat-list *ngIf="(whichFeed$ | async) === 'LIST'">
+            <sugar-feed-card mat-list-item *ngFor="let transactions of sugarFeed$ | async">
+            </sugar-feed-card>
+        </mat-list>
+        <sugar-map *ngIf="(whichFeed$ | async) === 'MAP'"></sugar-map>
+    </div>
 </div>

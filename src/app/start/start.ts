@@ -82,8 +82,6 @@ export class StartComponent {
     if (this.nameFormControl.valid) {
       this.starterService.submitName(this.nameFormControl.value);
       this.registerStepSubject.next('SUBMITTING');
-
-      /// NEED TO ADD CODE TO HIT AN API
     }
   }
 
