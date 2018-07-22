@@ -7,6 +7,8 @@
   padding: $sugar-card-padding;
   border-radius: $sugar-card-border-radius;
 
+  transition: transform .05s ease-in-out;
+
   .avatar {
     height: $sugar-card-avatar-size;
     width: $sugar-card-avatar-size;
