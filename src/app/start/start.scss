@@ -11,7 +11,7 @@
 }
 
 .register-location {
-    width: 300%;
+    width: 400%;
     transform: translateX(0%);
     -webkit-transition: 400ms ease-out;
     -moz-transition: 400ms ease-out;
@@ -19,23 +19,31 @@
   }
   
   .register-phone-number {
-    width: 300%;
-    transform: translateX(-33%);
+    width: 400%;
+    transform: translateX(-25%);
     -webkit-transition: 400ms ease-out;
     -moz-transition: 400ms ease-out;
     -o-transition: 400ms ease-out;
   }
 
   .register-name {
-    width: 300%;
-    transform: translateX(-66%);
+    width: 400%;
+    transform: translateX(-50%);
+    -webkit-transition: 400ms ease-out;
+    -moz-transition: 400ms ease-out;
+    -o-transition: 400ms ease-out;
+  }
+
+  .register-submitting {
+    width: 400%;
+    transform: translateX(-75%);
     -webkit-transition: 400ms ease-out;
     -moz-transition: 400ms ease-out;
     -o-transition: 400ms ease-out;
   }
 
 .register-card {
-    width: 33%;
+    width: 25%;
     float: left;
     height: 100vh;
     background-color: rgba(232.0, 232.0, 232.0, 0.5);
@@ -44,4 +52,6 @@
 .starter-form {
     display: inline-block;
     margin: 0 auto;
+    width: 75%;
+    margin-top: 25%;
 }

@@ -65,24 +65,25 @@ export class StartComponent {
   }
 
   public submitZipCode(): void {
-    console.log('here');
     if (this.locationFormControl.valid) {
-      this.starterService.submitZipCode(this.locationFormControl.get('zipcode')!.value);
+      this.starterService.submitZipCode(this.locationFormControl.value);
       this.registerStepSubject.next('PHONE NUMBER');
     }
   }
 
   public submitPhoneNumber(): void {
     if (this.phoneNumberFormControl.valid) {
-      this.starterService.submitPhoneNumber(this.phoneNumberFormControl.get('phoneNumber')!.value);
+      this.starterService.submitPhoneNumber(this.phoneNumberFormControl.value);
       this.registerStepSubject.next('NAME');
     }
   }
 
   public submitName(): void {
     if (this.nameFormControl.valid) {
-      this.starterService.submitName(this.nameFormControl.get('name')!.value);
+      this.starterService.submitName(this.nameFormControl.value);
       this.registerStepSubject.next('SUBMITTING');
+
+      /// NEED TO ADD CODE TO HIT AN API
     }
   }
 
