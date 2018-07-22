@@ -25,17 +25,17 @@ export interface PostingContent {
 }
 
 export interface Posting {
-  id: number;
+  id?: number;
   type: PostingType;
-  status: PostingStatus;
-  pickupLocation: PostingLocation;
-  pickupTime: string;
-  expiresAt: string;
-  closedAt: string;
-  content: PostingContent;
-  createdAt: string;
-  createdBy: User;
-  grantedBy: User;
+  status?: PostingStatus;
+  pickupLocation?: PostingLocation;
+  pickupTime?: string;
+  expiresAt?: string;
+  closedAt?: string;
+  content?: PostingContent;
+  createdAt?: string;
+  createdBy?: User;
+  grantedBy?: User;
 }
 
 export enum UserRole {

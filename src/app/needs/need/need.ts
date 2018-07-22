@@ -24,9 +24,7 @@ export class NeedComponent {
     }
 
     public submitNeed(): void {
-        if (this.needsFormControl.valid) {
-            this.needsService.submitNeed(this.needsFormControl.value);
-        }
-        
+        console.log('submit');
+        this.needsService.submitNeed(this.needsFormControl.value);
     }
 }

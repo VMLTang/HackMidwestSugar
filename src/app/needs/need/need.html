@@ -19,7 +19,7 @@
     <div class="p-y-10 example-container">
         <form class="starter-form justify-center column">
             <mat-form-field>
-                <textarea rows="4" matInput placeholder="I need"></textarea>
+                <textarea [formControl]="needsFormControl" rows="4" matInput placeholder="I need"></textarea>
             </mat-form-field>
             <button (click)="submitNeed()" mat-raised-button color="primary">Submit</button>
         </form>
