@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OktaCallbackComponent } from '@okta/okta-angular';
 import { AuthGuard } from '@sugar/app/auth.guard';
+import { HaveComponent } from '@sugar/app/have/have';
 import { HomeComponent } from '@sugar/app/home/home.component';
 import { LoginComponent } from '@sugar/app/login';
 import { NeedsComponent } from '@sugar/app/needs/needs';
@@ -10,6 +11,10 @@ const routes: Routes = [
   {
     path: 'needs',
     component: NeedsComponent
+  },
+  {
+    path: 'haves',
+    component: HaveComponent
   },
   {
     path: 'expo/:postId',

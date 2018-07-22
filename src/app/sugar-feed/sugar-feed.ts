@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TransactionsService } from '@sugar/app/core/transactions.service';
+import { PostsService } from '@sugar/app/core/posts.service';
 import { StartService } from '@sugar/app/start/start.service';
-import { Transaction } from '@sugar/lib';
+import { Posting } from '@sugar/lib';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
@@ -10,18 +10,19 @@ import { BehaviorSubject, Observable } from 'rxjs';
   styleUrls: ['./sugar-feed.scss']
 })
 export class SugarFeedComponent {
-  public sugarFeed$: Observable<Transaction[]>;
+  public sugarFeed$: Observable<Posting[]>;
   public hasStart$: Observable<boolean>;
   private whichFeedSubject: BehaviorSubject<'MAP' | 'LIST'> = new BehaviorSubject<'MAP' | 'LIST'>('MAP');
 
   public whichFeed$: Observable<'MAP' | 'LIST'> = this.whichFeedSubject.asObservable();
 
   constructor(
-    private transactionService: TransactionsService,
+    private transactionService: PostsService,
     private startService: StartService
   ) {
-    this.sugarFeed$ = this.transactionService.transactions$;
+    this.sugarFeed$ = this.transactionService.posts;
     this.hasStart$ = this.startService.hasStart$;
+    this.transactionService.getPostings();
   }
 
   public showFeedView(view: 'MAP' | 'LIST'): void {

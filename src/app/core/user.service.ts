@@ -31,6 +31,7 @@ export class UsersService {
           const newUser: StarterUser = { ...user};
           newUser.userId = value.id;
           localStorage.setItem('userId', value.id);
+          newUser.location = user.location;
           this.userSubject.next(newUser);
         });
 

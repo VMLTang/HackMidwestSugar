@@ -11,7 +11,7 @@ declare const H: any;
 @Injectable({
     providedIn: 'root'
 })
-export class NeedsService {
+export class HaveService {
     private user: StarterUser;
     private needsSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
     private platform = new H.service.Platform(environment.hereConfig);
@@ -31,7 +31,7 @@ export class NeedsService {
         });
     }
 
-    public submitNeed(value: string): void {
+    public submitHave(value: string): void {
         const expireDate = new Date();
         expireDate.setHours(expireDate.getHours() + 6);
 
@@ -45,7 +45,7 @@ export class NeedsService {
         geocoder.reverseGeocode(reverseGeocodingParameters, (result: any) => {
             console.log(result);
             this.http.post<any>('https://vmltang-sugar-api.azurewebsites.net/api/postings', {
-                type: PostingType.Request,
+                type: PostingType.Offer,
                 status: PostingStatus.Pending,
                 expiresAt: expireDate.toString(),
                 createdBy: this.user.userId,

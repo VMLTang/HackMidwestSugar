@@ -15,7 +15,7 @@
     </mat-toolbar>
     <div style="width: 100%" [ngClass]="{false:'map-half-height',true:'map-full-height' }[hasStart$ | async]">
         <mat-list *ngIf="(whichFeed$ | async) === 'LIST'">
-            <sugar-feed-card mat-list-item *ngFor="let transactions of sugarFeed$ | async">
+            <sugar-feed-card [post]="transaction" mat-list-item *ngFor="let transaction of sugarFeed$ | async">
             </sugar-feed-card>
         </mat-list>
         <sugar-map *ngIf="(whichFeed$ | async) === 'MAP'"></sugar-map>

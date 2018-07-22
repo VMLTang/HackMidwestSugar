@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { PostsService } from '@sugar/app/core/posts.service';
-import { NeedsService } from '@sugar/app/needs/needs.service';
-import { FormControl, Validators } from '../../../../node_modules/@angular/forms';
-import { Router } from '../../../../node_modules/@angular/router';
+import { HaveService } from '@sugar/app/have/have.service';
+import { FormControl, Validators } from '../../../node_modules/@angular/forms';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
-    selector: 'sugar-need',
-    templateUrl: './need.html',
-    styleUrls: ['./need.scss']
+    selector: 'sugar-have',
+    templateUrl: './have.html',
+    styleUrls: ['./have.scss']
 })
-export class NeedComponent {
+export class HaveComponent {
     public needsFormControl: FormControl;
     constructor(
         private router: Router,
-        private needsService: NeedsService,
+        private haveService: HaveService,
         private postsService: PostsService
     ) {
         this.needsFormControl = new FormControl('', [
@@ -26,7 +26,7 @@ export class NeedComponent {
     }
 
     public submitNeed(): void {
-        this.needsService.submitNeed(this.needsFormControl.value);
+        this.haveService.submitHave(this.needsFormControl.value);
         this.postsService.getPostings();
         this.router.navigateByUrl('/home');
     }

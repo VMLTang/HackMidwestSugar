@@ -6,6 +6,7 @@ import { AppRoutingModule } from '@sugar/app/app-routing.module';
 import { AppComponent } from '@sugar/app/app.component';
 import { AuthInterceptor } from '@sugar/app/auth.interceptor';
 import { SugarCoreModule } from '@sugar/app/core/core.module';
+import { HaveModule } from '@sugar/app/have/have.module';
 import { HomeComponent } from '@sugar/app/home';
 import { LoginComponent } from '@sugar/app/login';
 import { MapModule } from '@sugar/app/map/map.module';
@@ -53,6 +54,7 @@ export class HammerConfig extends HammerGestureConfig  {
     SugarCoreModule,
     MapModule,
     NeedsModule,
+    HaveModule,
     OktaAuthModule.initAuth(environment.oktaConfig),
     AppRoutingModule,
   ],
