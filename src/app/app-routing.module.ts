@@ -12,9 +12,14 @@ const routes: Routes = [
     component: NeedsComponent
   },
   {
-    path: 'expo',
+    path: 'expo/:postId',
     loadChildren: 'src/app/expo/expo.module#ExpoModule',
     canActivate: [ AuthGuard ],
+  },
+  {
+    path: 'expo',
+    pathMatch: 'full',
+    redirectTo: '/expo/0',
   },
   {
     path: 'home',
