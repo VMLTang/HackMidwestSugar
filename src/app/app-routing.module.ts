@@ -18,8 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'expo',
-    pathMatch: 'full',
-    redirectTo: '/expo/0',
+    loadChildren: 'src/app/expo/expo.module#ExpoModule',
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'home',
