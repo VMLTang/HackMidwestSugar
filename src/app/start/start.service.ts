@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { UsersService } from '@sugar/app/core/user.service';
 import { MapService } from '@sugar/app/map/map-service';
 import { StarterUser } from '@sugar/app/start/start.types';
-import { BehaviorSubject, Observable } from '../../../node_modules/rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,10 @@ export class StartService {
     private starter: StarterUser = {} as StarterUser;
 
     public hasStart$: Observable<boolean> = this.hasStartSubject.asObservable();
-  constructor(private mapService: MapService) {
+  constructor(
+      private mapService: MapService,
+      private userService: UsersService
+    ) {
   }
 
   public submitZipCode(value: string): void  {
@@ -25,6 +29,7 @@ export class StartService {
 
   public submitName(value: string): void  {
       this.starter.name = value;
+      this.userService.createBasicUser(this.starter);
       this.hasStartSubject.next(false);
   }
 }

@@ -1,1 +1,1 @@
-export { ExpoCardComponent } from './expo-card.component';
+export { ExpoCardComponent } from '@sugar/app/expo/expo-card/expo-card.component';

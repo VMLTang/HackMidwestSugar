@@ -1,1 +1,1 @@
-export { HomeComponent } from './home.component';
+export { HomeComponent } from '@sugar/app/home/home.component';

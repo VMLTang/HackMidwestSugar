@@ -7,7 +7,7 @@ import {
   } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { StartService } from '@sugar/app/start/start.service';
-import { BehaviorSubject, Observable } from '../../../node_modules/rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export class RegisterErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

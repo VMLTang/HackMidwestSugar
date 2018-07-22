@@ -1,4 +1,4 @@
-import { MapPoint } from './map.types';
+import { MapPoint } from '@sugar/lib/map.types';
 
 export enum UserRole {
   Consumer = 'consumer',

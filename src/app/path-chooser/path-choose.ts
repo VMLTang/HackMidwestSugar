@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const SineWaves: any;
 
@@ -8,6 +9,7 @@ declare const SineWaves: any;
     styleUrls: ['./path-chooser.scss']
 })
 export class PathChooserComponent implements AfterViewInit {
+    constructor(private router: Router) {}
     public ngAfterViewInit() {
         // const canvas: HTMLCanvasElement = document.getElementById('waves') as HTMLCanvasElement;
         // const width = canvas!.width;
@@ -71,10 +73,10 @@ export class PathChooserComponent implements AfterViewInit {
     }
 
     public onIHave(): void  {
-
+        this.router.navigateByUrl('/have');
     }
 
     public onINeed(): void {
-
+        this.router.navigateByUrl('/need');
     }
 }

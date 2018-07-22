@@ -1,1 +1,1 @@
-export { ExpoNavComponent } from './expo-nav.component';
+export { ExpoNavComponent } from '@sugar/app/expo/expo-nav/expo-nav.component';

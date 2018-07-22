@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
+import { GeolocationService } from '@sugar/app/core/geolocation.service';
+import { PostsService } from '@sugar/app/core/posts.service';
 import { TransactionsService } from '@sugar/app/core/transactions.service';
-import { GeolocationService } from './geolocation.service';
-import { PostsService } from './posts.service';
 
 @NgModule({
   providers: [
