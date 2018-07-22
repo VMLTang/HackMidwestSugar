@@ -12,8 +12,11 @@ export class ExpoCardComponent implements OnInit {
   @HostBinding('style.transform')
   private transform = 'translateY(0px)';
 
+  @HostBinding('style.opacity')
+  opacity = '1';
+
   @HostBinding('style.transition')
-  private transition = 'transform .05s ease-in-out';
+  transition = 'transform .05s ease-in-out';
 
   constructor() { }
 
@@ -25,6 +28,7 @@ export class ExpoCardComponent implements OnInit {
   }
 
   set translateY(y: number) {
+    this.opacity = `${1 - (y / -600)}`;
     this.transform = `translateY(${y}px)`;
   }
 
@@ -40,17 +44,20 @@ export class ExpoCardComponent implements OnInit {
 
   @HostListener('panstart', ['$event'])
   onPanStart() {
+    console.log('panstart');
     this.transitionDuration = 0;
   }
 
   @HostListener('panend', ['$event'])
   onRelease() {
+    console.log('panend');
     this.transitionDuration = 0.4;
     this.translateY = 0;
   }
 
   @HostListener('panup', ['$event'])
   onPanup($event: any) {
+    console.log('panup');
     this.translateY = $event.isFinal
       ? 0
       : $event.deltaY;
