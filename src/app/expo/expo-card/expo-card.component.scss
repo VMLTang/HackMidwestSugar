@@ -15,10 +15,36 @@
   .item {
 
 
-    img {
+    .frame {
+      position: relative;
+      overflow: visible;
       height: $sugar-card-item-image-size;
-      max-height: $sugar-card-item-image-size;
+      width: $sugar-card-item-image-size;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+
+
+      &:before {
+        $bg-buffer: -0.3 * $sugar-card-item-image-size;
+        background: map-get($sugar-theme-primary, 'default');
+        content: '';
+        position: absolute;
+        top: $bg-buffer;
+        right: $bg-buffer;
+        bottom: $bg-buffer;
+        left: $bg-buffer;
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      img {
+        height: $sugar-card-item-image-size;
+        max-height: $sugar-card-item-image-size;
+      }
     }
+
   }
 }
 
