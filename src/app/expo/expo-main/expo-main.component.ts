@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
-import { filter, switchMap, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { filter, switchMap, map, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Component, OnInit, HostBinding, ChangeDetectionStrategy } from '@angular/core';
@@ -25,10 +25,16 @@ export class ExpoMainComponent implements OnInit {
     public dialog: MatDialog,
     public postsService: PostsService
   ) {
-    this.currentPostId = this.route.queryParamMap.pipe(
-      map((params: ParamMap) => {
-        const postId = params.get('postId') || NaN;
-        return Number.isSafeInteger(+postId) ? +postId : 0;
+    this.currentPostId = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        const postId = params.get('postId');
+        if (typeof postId === 'string' && Number.isSafeInteger(+postId)) {
+          return of(+postId);
+        } else {
+          return this.postsService.firstAvailableId.pipe(
+            tap(id => this.router.navigate(['expo', id]))
+          );
+        }
       })
     );
 
@@ -68,7 +74,7 @@ export class ExpoMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.postsService.getPostings();
+    this.postsService.getPostings();
   }
 
 }
