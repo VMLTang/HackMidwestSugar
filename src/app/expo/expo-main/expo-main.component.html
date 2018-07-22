@@ -1,6 +1,10 @@
 <expo-nav></expo-nav>
 <div class="column grow p-10">
-  <expo-card></expo-card>
+  <expo-card #card="card"></expo-card>
+
+  <div class="back-wall p-10 justify-center align-center row" [style.opacity]="1 - card.opacity">
+    <span class="mat-display-1 m-0">Notify Jennifer</span>
+  </div>
 </div>
 
 

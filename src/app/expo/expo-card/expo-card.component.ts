@@ -4,6 +4,7 @@ import { Component, OnInit, ChangeDetectionStrategy, HostBinding, HostListener }
   selector: 'expo-card', // tslint:disable-line
   templateUrl: './expo-card.component.html',
   styleUrls: ['./expo-card.component.scss'],
+  exportAs: 'card',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpoCardComponent implements OnInit {
@@ -13,7 +14,7 @@ export class ExpoCardComponent implements OnInit {
   private transform = 'translateY(0px)';
 
   @HostBinding('style.opacity')
-  opacity = '1';
+  opacity = 1;
 
   @HostBinding('style.transition')
   transition = 'transform .05s ease-in-out';
@@ -28,7 +29,7 @@ export class ExpoCardComponent implements OnInit {
   }
 
   set translateY(y: number) {
-    this.opacity = `${1 - (y / -600)}`;
+    this.opacity = 1 - (y / -400);
     this.transform = `translateY(${y}px)`;
   }
 
@@ -44,20 +45,18 @@ export class ExpoCardComponent implements OnInit {
 
   @HostListener('panstart', ['$event'])
   onPanStart() {
-    console.log('panstart');
     this.transitionDuration = 0;
   }
 
   @HostListener('panend', ['$event'])
   onRelease() {
-    console.log('panend');
     this.transitionDuration = 0.4;
     this.translateY = 0;
   }
 
+  @HostListener('pandown', ['$event'])
   @HostListener('panup', ['$event'])
   onPanup($event: any) {
-    console.log('panup');
     this.translateY = $event.isFinal
       ? 0
       : $event.deltaY;
