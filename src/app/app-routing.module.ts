@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
 import { HomeComponent } from '@sugar/app/home/home.component';
+import { LoginComponent } from './login';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'implicit/callback',
     component: OktaCallbackComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '',

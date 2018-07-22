@@ -10,6 +10,7 @@ import { SugarCoreModule } from './core/core.module';
 import { HomeComponent } from './home';
 import { MapModule } from './map/map.module';
 import { SugarSharedModule } from './shared.module';
+import { LoginComponent } from './login';
 
 
 
@@ -17,6 +18,7 @@ import { SugarSharedModule } from './shared.module';
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserAnimationsModule,
