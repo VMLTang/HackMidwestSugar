@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { SugarSharedModule } from '@sugar/app/shared.module';
+
+import { ExpoRouterModule } from './expo-router.module';
+import { ConfirmationDialogComponent } from './confirmation-dialog';
 import { ExpoCardComponent } from './expo-card';
 import { ExpoMainComponent } from './expo-main';
 import { ExpoNavComponent } from './expo-nav';
-import { ExpoRouterModule } from './expo-router.module';
 import { SchedulerModule } from './scheduler';
 
 
@@ -14,9 +16,13 @@ import { SchedulerModule } from './scheduler';
     ExpoRouterModule
   ],
   declarations: [
+    ConfirmationDialogComponent,
     ExpoMainComponent,
     ExpoCardComponent,
     ExpoNavComponent,
+  ],
+  entryComponents: [
+    ConfirmationDialogComponent
   ]
 })
 export class ExpoModule { }
