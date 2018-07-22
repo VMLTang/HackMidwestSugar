@@ -1,4 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
+import { OktaAuthService } from '../../node_modules/@okta/okta-angular';
 
 @Component({
   selector: 'sugar-root',
@@ -7,4 +8,10 @@ import { Component, HostBinding } from '@angular/core';
 })
 export class AppComponent {
   @HostBinding() class = 'mat-typography';
+
+  constructor(
+    public auth: OktaAuthService
+  ) {
+    window['auth'] = this.auth;
+  }
 }
