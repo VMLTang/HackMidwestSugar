@@ -31,9 +31,10 @@ $sugar-direction-labels: (
 );
 
 /* Cards */
-$sugar-card-padding: 24px 16px !default;
+$sugar-card-nav-height: 64px !default;
+$sugar-card-padding: 24px 16px 36px !default;
 $sugar-card-border-radius: 2px !default;
 $sugar-card-header-size: 80px !default;
-$sugar-card-item-image-size: 140px !default;
-$sugar-card-action-icon-size: 36px !default;
+$sugar-card-item-image-size: 100px !default;
+$sugar-card-action-icon-size: 48px !default;
 $sugar-card-avatar-size: 80px !default;
