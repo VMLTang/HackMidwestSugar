@@ -1,4 +1,4 @@
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, take } from 'rxjs/operators';
 import { UsersService } from '@sugar/app/core/user.service';
 import { PostsService } from '@sugar/app/core/posts.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -29,7 +29,8 @@ export class SchedulerService {
           this.userService.userId! as any,
           (new Date()).toUTCString(),
         ));
-      })
+      }),
+      take(1)
     )
     .subscribe(() => {
       this.router.navigate(['..'], {

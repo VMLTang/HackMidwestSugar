@@ -1,4 +1,9 @@
-<h1 class="mat-display-2">Where?</h1>
+<h1 class="mat-display-1">Where?</h1>
+
+<mat-form-field class="p-x-1" style="width: 80%">
+  <textarea [(ngModel)]="when" rows="2" matInput placeholder="Where would you like to meet?"></textarea>
+</mat-form-field>
+
 
 <button
   [routerLink]="['..', 'time']"

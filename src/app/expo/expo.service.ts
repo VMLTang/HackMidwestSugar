@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, combineLatest, ConnectableObservable } from 'rxjs';
-import { filter, switchMap, map, tap, distinctUntilChanged, publishReplay } from 'rxjs/operators';
+import { Observable, of, combineLatest } from 'rxjs';
+import { filter, switchMap, map, tap, distinctUntilChanged } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '@sugar/app/core/posts.service';
 import { Posting } from '@sugar/lib';
