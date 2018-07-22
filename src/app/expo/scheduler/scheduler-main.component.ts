@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
 import { SchedulerService } from './scheduler.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { SchedulerService } from './scheduler.service';
   ]
 })
 export class SchedulerMainComponent implements OnInit, OnDestroy {
+
+  @HostBinding() class = 'column justify-start';
 
   constructor(
     public scheduler: SchedulerService
