@@ -1,6 +1,5 @@
 <div class="row justify-space-between m-b-5">
-    <p class="subheading-1 m-0">12 minutes ago</p>
-  <span class="mat-caption">~1000 ft. away</span>
+  <p class="subheading-1 m-0">Created {{ posting.createdAt | fromNow }}</p>
 </div>
 
 <mat-divider></mat-divider>
@@ -10,23 +9,24 @@
   <img class="avatar circle" src="/assets/avatar.png">
 
   <div class="column gap-0">
-    <h1 class="mat-headline">Jennifer</h1>
+    <h1 class="mat-headline">{{ posting.createdBy?.name }}</h1>
   </div>
 </div>
 
 <div class="p-y-10">
-  <p class="mat-title m-0">Ermahgerd! Jernersmurf nerds serm ERGS like, rert nur!</p>
+  <p class="mat-title m-0">{{ posting.content?.message || 'No message provided' }}</p>
 </div>
 
-<div class="item row align-center justify-center gap-5">
+<!-- <div class="item row align-center justify-center gap-5">
   <div class="frame">
     <img src="/assets/food/egg.png">
   </div>
-</div>
+</div> -->
 
 <div class="grow"></div>
 
 <div class="column align-center gap-10">
   <mat-icon class="action-icon pulse-primary" color="primary">arrow_upward</mat-icon>
   <p class="mat-headline m-0">Swipe to help</p>
+  <p class="subheading-1 m-0">Expires {{ posting.expiresAt | fromNow }}</p>
 </div>

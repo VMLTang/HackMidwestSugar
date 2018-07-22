@@ -15,13 +15,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 
-/* @angular */
-
-/* @angular/flex-layout */
-
-/* @angular/cdk */
+import { FromNowPipe } from './from-now.pipe';
 
 @NgModule({
+  declarations: [
+    FromNowPipe
+  ],
   exports: [
     /* @angular */
     CommonModule,
@@ -44,7 +43,9 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatListModule,
     MatFormFieldModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+
+    FromNowPipe
   ],
 })
 export class SugarSharedModule {}

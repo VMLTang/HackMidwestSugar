@@ -1,12 +1,13 @@
+import { Posting } from '@sugar/lib';
+import { PostsService } from '@sugar/app/core/posts.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ChangeDetectionStrategy, HostBinding, HostListener } from '@angular/core';
+import { Component, OnInit, HostBinding, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'expo-card', // tslint:disable-line
   templateUrl: './expo-card.component.html',
   styleUrls: ['./expo-card.component.scss'],
   exportAs: 'card',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpoCardComponent implements OnInit {
   @HostBinding() class = 'column gap-20 grow';
@@ -20,10 +21,14 @@ export class ExpoCardComponent implements OnInit {
   @HostBinding('style.transition')
   transition = 'transform .05s ease-in-out';
 
+  @Input()
+  posting: Posting;
+
   constructor(
     private readonly router: Router,
-    private readonly route: ActivatedRoute
-  ) { }
+    private readonly route: ActivatedRoute,
+    public readonly postsService: PostsService,
+  ) {}
 
   ngOnInit() {
   }

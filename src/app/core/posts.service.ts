@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Posting } from '@sugar/lib';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Injectable } from '../../../node_modules/@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class PostsService {
   constructor(
     private http: HttpClient,
   ) {
+    window['PostsService'] = this;
     this.posts = this.posts$.asObservable();
 
 
