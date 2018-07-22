@@ -2,9 +2,8 @@ import { SugarSharedModule } from '@sugar/app/shared.module';
 import { NgModule } from '@angular/core';
 
 import { ExpoRouterModule } from './expo-router.module';
-import { CardComponent } from './card';
+import { ExpoCardComponent } from './expo-card';
 import { ExpoMainComponent } from './expo-main';
-import { ExpoPostComponent } from './expo-post';
 
 
 @NgModule({
@@ -13,9 +12,8 @@ import { ExpoPostComponent } from './expo-post';
     ExpoRouterModule
   ],
   declarations: [
-    CardComponent,
     ExpoMainComponent,
-    ExpoPostComponent,
+    ExpoCardComponent,
   ]
 })
 export class ExpoModule { }
