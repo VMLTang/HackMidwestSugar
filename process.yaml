@@ -1,0 +1,6 @@
+apps:
+  - script: 'server.js'
+    name: 'vmltang-sugar-web'
+    instances: 'max'
+    env:
+      PORT: 3000
