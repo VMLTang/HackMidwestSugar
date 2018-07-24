@@ -2,5 +2,6 @@ apps:
   - script: 'server.js'
     name: 'vmltang-sugar-web'
     instances: 'max'
+    exec_mode: cluster
     env:
       PORT: 3000
